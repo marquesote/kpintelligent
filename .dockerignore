@@ -1,0 +1,14 @@
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+.next
+.git
+.gitignore
+README.md
+ANALISIS_LEXAGENDA.md
+BUSINESS_LOGIC.md
+GEMINI.md
+.claude
+e2e
+playwright.config.ts
