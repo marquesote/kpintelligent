@@ -1,161 +1,191 @@
-# 🎯 Skills System - SaaS Factory
+# Skills System - SaaS Factory V5
 
-**Skills** son carpetas con instrucciones que enseñan a Claude cómo hacer tareas especializadas. Son el corazón de la extensibilidad en Claude Code.
+> Todo es un Skill. Hot reload. Auto-discovery. Zero config.
+> **V5: la fabrica no solo construye — OPERA negocios.** Construye → lanza → opera → aprende.
 
-## 📚 Estructura Recomendada por Anthropic
+---
+
+## Skills de Operacion de Negocio (NUEVOS en V5)
+
+| Skill | Comando | Pilar | Descripcion |
+|-------|---------|-------|-------------|
+| `factory-brain` | `/factory-brain` | Aprendizaje compuesto | Meta-memoria GLOBAL cross-proyecto. La fabrica aprende ENTRE proyectos |
+| `outcomes` | `/outcomes` | Cierre del loop | Ingiere revenue/conversion/activacion reales y los retroalimenta |
+| `acquisition` | `/acquisition` | Distribucion | SEO programatico + contenido + redes + ads → primeros usuarios |
+| `mission-control` | `/mission-control` | Operacion autonoma | Dashboard del portafolio completo |
+| `guardian` | `/guardian` | Operacion autonoma | Vigila produccion, auto-fix con freno humano |
+| `vertical-pack` | `/vertical-pack` | Compounding | Convierte un proyecto terminado en pack/skill reusable |
+| `parallel-build` | `/parallel-build` | Velocidad y calidad | Construccion multi-agente + verificacion adversarial (Workflow) |
+| `quality-gates` | `/quality-gates` | Velocidad y calidad | Gates duros: typecheck, a11y, CWV, conversion, costo-IA |
+| `cost-optimizer` | `/cost-optimizer` | Velocidad y calidad | Unit economics + routing de modelos por costo |
+| `compliance` | `/compliance` | Blind spot | Privacidad, terminos, cookies, biometria, borrado de datos |
+| `onboarding` | `/onboarding` | Blind spot | First-run experience → activacion al primer valor |
+| `i18n` | `/i18n` | Blind spot | Internacionalizacion LatAm-first (es-MX / en-US) |
+
+---
+
+## Packs Verticales incluidos (output de la fabrica)
+
+Ejemplos de `vertical-pack` (la fabrica destila sus proyectos en skills reusables).
+**No cuentan dentro de los 30 skills core** — son packs reutilizables listos para instalar.
+
+| Skill | Origen | Que agrega |
+|-------|--------|------------|
+| `pack-cold-email` | Proyecto Prospecta | Cold email / outreach: motor de correo (Resend + dry-run), redaccion con IA, compliance (unsubscribe) y modelo de datos (leads, campaigns, sends, events) |
+
+> Total de carpetas en `.claude/skills/`: **31** = 30 skills core + 1 pack vertical.
+
+---
+
+## Inventario de Skills de Construccion (18 heredados de V4)
+
+> Nombres exactos de las carpetas en `.claude/skills/` (verificado).
+
+| Skill | Cuando usarlo |
+|-------|---------------|
+| `new-app` | Entrevista de negocio → BUSINESS_LOGIC.md |
+| `add-login` | Auth completo Supabase (login, signup, password reset, profiles, RLS) |
+| `add-payments` | Pagos con Polar (MoR): checkout, webhooks, suscripciones, acceso |
+| `add-emails` | Emails transaccionales: Resend + React Email + batch + unsubscribe |
+| `add-mobile` | PWA instalable + push notifications (iOS compatible) |
+| `website-3d` | Landing cinematica: scroll-driven video + copy AIDA/PAS + glass-morphism |
+| `prp` | Generar Product Requirements Proposal (siempre antes de bucle-agentico) |
+| `bucle-agentico` | Features complejas por fases (DB + API + UI coordinados) |
+| `ai` | AI Templates (chat, RAG, vision, tools, web-search) |
+| `supabase` | BD completa: tablas, RLS, migraciones, queries, metricas, CRUD |
+| `playwright-cli` | Testing/QA automatizado con browser real |
+| `primer` | Cargar contexto completo del proyecto al inicio |
+| `update-sf` | Actualizar SaaS Factory a la ultima version |
+| `eject-sf` | Remover SaaS Factory del proyecto (DESTRUCTIVO) |
+| `memory-manager` | Memoria persistente por proyecto (`.claude/memory/`, git-versioned) |
+| `image-generation` | Generar/editar imagenes con OpenRouter + Gemini |
+| `autoresearch` | Auto-optimizar skills con loop autonomo (patron Karpathy) |
+| `skill-creator` | Crear nuevos skills para extender la fabrica |
+
+---
+
+## Estructura de un Skill
 
 ```
 skill-name/
-├── SKILL.md              # Requerido: Metadatos + Instrucciones
-├── scripts/              # Opcional: Código ejecutable
-│   ├── helper.py
-│   └── processor.sh
-├── references/           # Opcional: Documentación de referencia
-│   ├── api_docs.md
-│   └── schemas.md
-└── assets/              # Opcional: Recursos de salida
-    ├── templates/
-    └── icons/
+├── SKILL.md              # Requerido: frontmatter YAML + instrucciones
+├── scripts/              # Opcional: codigo ejecutable (.py, .sh, .js)
+├── references/           # Opcional: docs de referencia (>5k palabras)
+└── assets/               # Opcional: templates, imagenes, fonts
 ```
 
-## SKILL.md - Estructura Mínima
+### Frontmatter YAML
 
 ```yaml
 ---
-name: skill-name              # Identificador único (lowercase, hyphens)
-description: What this skill  # Cuándo y por qué usarlo
-                does and when
-license: MIT                  # (Opcional)
+name: skill-name                    # Identificador (lowercase, hyphens, max 64 chars)
+description: Que hace               # Claude usa esto para decidir cuando activarlo
+argument-hint: "[argumento]"        # Hint en autocomplete (opcional)
+user-invocable: false               # Solo Claude puede invocarlo (opcional)
+disable-model-invocation: true      # Solo el usuario puede invocarlo (opcional)
+allowed-tools: Read, Write, Bash    # Tools permitidos sin pedir permiso (opcional)
+model: claude-sonnet-4-6            # Modelo especifico (opcional)
+context: fork                       # Ejecuta en subagent aislado (opcional)
+agent: Explore                      # Tipo de agente (opcional)
 ---
-
-# Skill Title
-
-## Purpose
-Qué hace el skill.
-
-## When to Use
-Cuándo Claude debería activarlo.
-
-## How to Use
-Instrucciones paso a paso.
 ```
 
-## ✅ Principios de Anthropic
+### Variables de Sustitucion
 
-### Progressive Disclosure (Carga Eficiente)
-1. **Metadata** (~100 palabras) - Siempre en contexto
+| Variable | Descripcion |
+|----------|-------------|
+| `$ARGUMENTS` | Todos los argumentos del usuario |
+| `$ARGUMENTS[N]` o `$N` | Argumento por indice (0-based) |
+| `${CLAUDE_SESSION_ID}` | ID de sesion actual |
+| `${CLAUDE_SKILL_DIR}` | Directorio del skill |
+| `` !`comando` `` | Inyeccion de contexto dinamico (ejecuta shell) |
+
+### Progressive Disclosure
+
+1. **Metadata** (~100 palabras) - Siempre en contexto (frontmatter)
 2. **SKILL.md** (<5k palabras) - Cuando se activa
-3. **Resources** (unlimited) - Bajo demanda
-
-### Organización
-
-| Carpeta | Cuándo Usar | Formato |
-|---------|------------|---------|
-| **scripts/** | Código reutilizable | .py, .sh, .js |
-| **references/** | Documentación >5k | .md, .txt |
-| **assets/** | Recursos de salida | .html, .png, .ttf |
-
-### Naming Conventions
-
-- **Skills**: `kebab-case` (skill-creator)
-- **Scripts**: `action_noun.py` (create_skill.py)
-- **References**: `descriptive_name.md` (api_docs.md)
-
-## 🛠️ Tools Incluidos
-
-### skill-creator
-Herramienta para crear nuevos skills en SaaS Factory.
-
-**Ubicación**: `.claude/skills/skill-creator/`
-
-**Scripts**:
-- `init_skill.py` - Crear nueva skill
-- `quick_validate.py` - Validar skill
-- `package_skill.py` - Empaquetar para distribución
-
-**Uso**:
-```bash
-python init_skill.py my-skill
-python quick_validate.py ./my-skill
-python package_skill.py ./my-skill
-```
-
-## 📖 Referencias Recomendadas
-
-- [Agent Skills Spec](https://docs.anthropic.com/) - Especificación formal
-- [Skill Creator Guide](https://docs.anthropic.com/) - Guía completa
-- [Best Practices](https://docs.anthropic.com/) - Patrones probados
-
-## 🎯 Flujo de Creación
-
-1. **Inicializar**: `python init_skill.py my-skill`
-2. **Desarrollar**: Editar SKILL.md + agregar scripts/references/assets
-3. **Validar**: `python quick_validate.py ./my-skill`
-4. **Empaquetar**: `python package_skill.py ./my-skill`
-5. **Instalar**: `/plugin install my-skill.zip`
-6. **Usar**: Mencionar el skill en conversación
-
-## 📝 Checklist para Crear un Skill
-
-```
-□ SKILL.md con YAML frontmatter válido
-  □ name (lowercase, hyphens)
-  □ description (3-5 oraciones)
-
-□ Contenido bien organizado
-  □ SKILL.md <5k palabras
-  □ scripts/ para código reutilizable
-  □ references/ para documentación
-  □ assets/ para recursos
-
-□ Scripts listos
-  □ Tienen --help
-  □ Incluyen docstrings
-  □ Manejan errores
-
-□ Validación
-  □ python quick_validate.py ./skill-name
-  □ Resultado: ✓ All OK!
-
-□ Empaquetado
-  □ python package_skill.py ./skill-name
-  □ Resultado: skill-name.zip
-```
-
-## 💡 Ejemplo: Skill Simple
-
-```
-my-skill/
-├── SKILL.md
-│   ---
-│   name: my-skill
-│   description: Do X when Y happens
-│   ---
-│
-│   # My Skill
-│
-│   ## Purpose
-│   This skill...
-│
-│   ## How to Use
-│   1. Step one
-│   2. Step two
-│
-├── scripts/
-│   └── processor.py
-│
-└── references/
-    └── api_docs.md
-```
-
-## 🚀 Próximos Pasos
-
-1. Usa `skill-creator` para crear nuevos skills
-2. Sigue estos principios para mantener consistencia
-3. Valida siempre antes de distribuir
-4. Documenta claramente para otros desarrolladores
+3. **Resources** (unlimited) - Bajo demanda (scripts/, references/, assets/)
 
 ---
 
-*Sistema de Skills estandardizado para SaaS Factory*
-*Basado en Anthropic Agent Skills Spec v1.0*
+## Memoria Persistente (.claude/memory/)
+
+SaaS Factory incluye un sistema de memoria persistente POR PROYECTO que reemplaza la auto-memory de Claude Code.
+
+**Por que?** La auto-memory de Claude Code guarda notas en `~/.claude/projects/` (local a tu maquina). Eso significa que no viaja con el repo, no es versionado, no es compartido con tu equipo, y Claude decide que guardar sin tu control.
+
+**Como funciona:**
+- `.claude/memory/MEMORY.md` es el indice (max 200 lineas, se carga automaticamente)
+- Carpetas por tipo: `user/`, `feedback/`, `project/`, `reference/`
+- Git-versioned: cada cambio es un commit que puedes revertir
+- El skill `memory-manager` gestiona cuando consultar y cuando guardar
+
+**Activacion:** La primera vez que se usa el skill `memory-manager`, automaticamente deshabilita la auto-memory de Claude Code en `.claude/settings.json` y crea la estructura de carpetas.
+
+---
+
+## Recursos Compartidos
+
+Los skills referencian estos directorios (NO se mueven):
+
+| Recurso | Path | Usado por |
+|---------|------|-----------|
+| PRP Template | `.claude/PRPs/prp-base.md` | Skill `prp` |
+| AI Templates | `.claude/skills/ai/references/` | Skill `ai` |
+| Design Systems | `.claude/design-systems/` | Directo (5 sistemas) |
+
+---
+
+## Crear un Nuevo Skill
+
+```bash
+# Opcion 1: Usar skill-creator
+/skill-creator
+
+# Opcion 2: Manual
+mkdir .claude/skills/mi-skill
+# Crear SKILL.md con frontmatter + instrucciones
+```
+
+### Checklist
+
+- [ ] SKILL.md con YAML frontmatter valido (name + description)
+- [ ] Contenido <5k palabras, forma imperativa
+- [ ] Scripts con --help y manejo de errores
+- [ ] References para docs >5k palabras
+- [ ] Descripcion clara de cuando usarlo
+
+---
+
+## Migracion V3 → V4
+
+| V3 | V4 |
+|----|-----|
+| `.claude/commands/*.md` | `.claude/skills/*/SKILL.md` |
+| `.claude/agents/*.md` | `.claude/skills/*/SKILL.md` (user-invocable: false, context: fork) |
+| `.claude/prompts/*.md` | `.claude/skills/*/SKILL.md` |
+| Agentes como archivos sueltos | Frontmatter `agent:` y `context: fork` en skills |
+| AI Templates como docs | Skill `/ai` con `references/` colocalizados |
+| PRPs como template suelto | Skill `/prp` que genera PRPs con context: fork |
+
+---
+
+## Evolucion V4 → V5
+
+| V4 (construir) | V5 (construir Y operar) |
+|----------------|-------------------------|
+| El loop termina en "deployado" | El loop sigue: medir → adquirir → operar → aprender |
+| Memoria POR proyecto | + Memoria GLOBAL cross-proyecto (`factory-brain`) |
+| Ciega a resultados | Ingiere revenue/conversion reales (`outcomes`) |
+| Sin distribucion | Motor de adquisicion (`acquisition`) |
+| Reactiva (espera ordenes) | + Operacion autonoma con freno humano (`guardian`) |
+| Construccion secuencial | + Construccion paralela multi-agente (`parallel-build`) |
+| "Funciona" como meta | + "Bueno y rentable": gates duros (`quality-gates`, `cost-optimizer`) |
+| Sin cumplimiento legal | Privacidad/biometria/borrado de datos (`compliance`) |
+| Pantallas vacias | First-run experience (`onboarding`) |
+| Espanol hardcodeado | Internacionalizacion LatAm-first (`i18n`) |
+
+---
+
+*SaaS Factory V5: La fabrica construye, lanza, opera y aprende.*
+*Basado en Claude Code Skills 2.0 (CC 2.1.0+)*
