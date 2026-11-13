@@ -65,3 +65,8 @@ Thumbs.db
 # Supabase
 supabase/.branches
 supabase/.temp
+
+# taste-skill (checks y capturas locales)
+.taste-skill/
+/shots/
+*.tsbuildinfo

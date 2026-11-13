@@ -1,0 +1,54 @@
+/* KPIntelligent: tokens as start.mjs brand printed them (the logo's blue as the one accent,
+   an off-white paper ground, a navy-black ink) and the page CSS the kit asks for. Linked last. */
+:root {
+  --p-bg: #f6f6f2; --p-surface: #e9eae5; --p-ink: #101a2c; --p-muted: #5e6572;
+  --p-accent: #0b5fd0; --p-accent-ink: #f6f6f2; --p-action: #0b5fd0; --p-action-ink: #f6f6f2;
+  --p-inv-bg: #101a2c; --p-inv-surface: #1d2738; --p-inv-ink: #f6f6f2; --p-inv-muted: #959aa1;
+  --p-inv-accent: #f6f6f2; --p-inv-accent-ink: #101a2c; --p-inv-action: #f6f6f2; --p-inv-action-ink: #101a2c;
+  --font-display: "Newsreader", Georgia, serif;
+  --font-text: "Hanken Grotesk", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.018em;
+  --display-tracking-xl: -0.025em;
+  --ly-scale: 1.06;
+}
+
+/* the client's own logo in the nav and the footer */
+.nav__logo > img { width: 32px; height: 32px; border-radius: 8px; flex: none; }
+
+/* a photograph with its own crop for a phone: the <picture> is the frame's .frame__img, its <img> fills it */
+picture.frame__img > img, .close__media > picture > img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.close__media > picture { position: absolute; inset: 0; }
+
+/* inside a visual: the diagram card's height and the tool rows' icons */
+#datos .panel { --p-h: 520px; --ground-bg: var(--p-bg); --ground-surface: var(--p-bg); }
+#datos .dg, #datos .dg * { transition: none !important; }
+.tools { display: grid; gap: var(--s-4); margin-top: var(--s-6); }
+.tools > div { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
+.tools .t-label { min-width: 132px; }
+.tools .ic-tile { --tile: 44px; }
+@media (max-width: 1023px) { #datos .panel { --p-h: 360px; } }
+@media (max-width: 639px) { #datos .panel { --p-h: 300px; } .tools { display: none; } }
+
+/* picture-develops: the method's photograph is the split's filled frame */
+figure.develop { margin: 0 0 var(--s-6); --ratio: 26%; }
+#metodo .frame__img { --pos: 50% 62%; }
+@media (max-width: 1023px) { figure.develop { --ratio: 40%; } }
+@media (max-width: 639px) { figure.develop { --ratio: 205%; } }
+
+/* a step's number in the method list */
+.rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
+
+/* the demo: the form under the words, the photograph on the split's right column */
+.demo-form { margin-top: var(--s-2); }
+#demo .frame { --ratio: 108%; }
+#demo .frame__img { --pos: 50% 45%; }
+@media (min-width: 1024px) and (max-width: 1279px) { figure.develop { --ratio: 16%; } #demo .frame { --ratio: 100%; } }
+/* the tablet (640 to 1023): the method keeps its three columns and the demo's photograph is a band, so both
+   stay one screen */
+@media (min-width: 640px) and (max-width: 1023px) {
+  #metodo .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #metodo .steps > .span-4 { grid-column: auto; }
+  #demo .frame { --ratio: 30%; }
+}
+@media (max-width: 639px) { #demo .frame { --ratio: 231%; } }

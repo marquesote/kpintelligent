@@ -1,11 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { siteConfig } from '@/config/siteConfig'
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
+    // The site's form posts FormData; JSON is still accepted.
+    const contentType = request.headers.get('content-type') ?? ''
+    const body: Record<string, unknown> = contentType.includes('application/json')
+      ? await request.json()
+      : Object.fromEntries(await request.formData())
 
-    const { name, email, phone, message } = body
+    const { name, email, message } = body
+    const phone = typeof body.phone === 'string' ? body.phone : ''
+    const company = typeof body.company === 'string' ? body.company : ''
 
     // Validate
     if (!name || typeof name !== 'string' || name.trim().length < 2) {
@@ -27,14 +41,15 @@ export async function POST(request: NextRequest) {
         await resend.emails.send({
           from: 'noreply@resend.dev',
           to: siteConfig.contact.email,
-          subject: `Nuevo mensaje de contacto de ${name.trim()}`,
+          subject: `Solicitud de demo de ${name.trim().replace(/\s+/g, ' ')}`,
           html: `
             <h2>Nuevo mensaje de contacto</h2>
-            <p><strong>Nombre:</strong> ${name.trim()}</p>
-            <p><strong>Email:</strong> ${email.trim()}</p>
-            <p><strong>Teléfono:</strong> ${phone?.trim() || 'No proporcionado'}</p>
+            <p><strong>Nombre:</strong> ${escapeHtml(name.trim())}</p>
+            <p><strong>Email:</strong> ${escapeHtml(email.trim())}</p>
+            <p><strong>Empresa:</strong> ${escapeHtml(company.trim()) || 'No indicada'}</p>
+            <p><strong>Teléfono:</strong> ${escapeHtml(phone.trim()) || 'No proporcionado'}</p>
             <p><strong>Mensaje:</strong></p>
-            <p>${message.trim().replace(/\n/g, '<br>')}</p>
+            <p>${escapeHtml(message.trim()).replace(/\n/g, '<br>')}</p>
             <hr>
             <p style="color:#666;font-size:12px;">Enviado desde el formulario de contacto de ${siteConfig.companyName}</p>
           `,
@@ -47,7 +62,8 @@ export async function POST(request: NextRequest) {
       console.log('Contact form submission (RESEND_API_KEY not configured):', {
         name: name.trim(),
         email: email.trim(),
-        phone: phone?.trim(),
+        company: company.trim(),
+        phone: phone.trim(),
         message: message.trim().substring(0, 100) + '...',
       })
     }
