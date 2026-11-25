@@ -138,7 +138,7 @@ export function SolutionsSection() {
       <div className="wrap">
         <div className="section-head">
           <h2 id="soluciones-h">Servicios de finanzas, datos e IA</h2>
-          <p>Trece servicios en cinco áreas, de la asesoría financiera mensual a los modelos de IA, sobre los mismos datos.</p>
+          <p>Doce servicios en cuatro áreas, de los cuadros de mando a los modelos de IA, sobre los mismos datos.</p>
         </div>
         <div className="grid grid--top fill">
           <ul className="rows span-6">

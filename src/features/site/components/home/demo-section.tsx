@@ -53,9 +53,6 @@ export function DemoSection() {
                 <Arrow />
               </button>
             </div>
-            <p className="form__note">
-              Usamos sus datos solo para contestarle: <a href="/privacidad">política de privacidad</a>.
-            </p>
             <p className="form__status" role="status" data-form-status="" />
           </form>
         </div>

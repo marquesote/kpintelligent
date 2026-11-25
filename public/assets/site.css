@@ -65,10 +65,10 @@ picture.frame__img > img, .close__media > picture > img { display: block; width:
 /* five service areas: the mega menu has five equal columns on a desktop; the footer's logo column is two of
    twelve there and a full row below 1024 */
 @media (min-width: 1024px) {
-  .nav__menu .menu-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .nav__menu .menu-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
   .nav__menu .menu-grid > .menu-col { grid-column: auto; }
 }
-@media (max-width: 1023px) { .footer .grid > .span-2.stack-4 { grid-column: 1 / -1; } }
+@media (max-width: 1023px) { .footer .grid > .stack-4 { grid-column: 1 / -1; } }
 
 /* asesoría financiera: the note under the hero's button, the FAQ heading beside the audience list, the consent box */
 .advisory-note { margin-top: var(--s-3); font-size: var(--t-small); color: var(--muted); }

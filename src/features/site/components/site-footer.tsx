@@ -27,7 +27,7 @@ export function SiteFooter({ base }: SiteFooterProps) {
           </div>
           <div className="closing__links">
             <div className="grid">
-              <div className="span-2 stack-4">
+              <div className={`${solutionGroups.length > 4 ? 'span-2' : 'span-4'} stack-4`}>
                 <a className="nav__logo" href={base === '' ? '#top' : '/'}>
                   <img src="/assets/img/logo-128.png" alt="" width={32} height={32} loading="lazy" />
                   KPIntelligent
@@ -53,9 +53,6 @@ export function SiteFooter({ base }: SiteFooterProps) {
                 propietarios.
               </span>
               <div className="socials" />
-              <a className="credits" href="/privacidad">
-                Política de privacidad
-              </a>
               <a className="credits" href="/credits.html">
                 Fotografías vía Wikimedia Commons
               </a>

@@ -16,18 +16,6 @@ export interface SolutionGroup {
 
 export const solutionGroups: SolutionGroup[] = [
   {
-    title: 'Asesoría financiera',
-    lead: 'Las cuentas de la empresa, explicadas cada mes.',
-    items: [
-      {
-        label: 'Asesoría financiera',
-        inline: 'asesoría financiera',
-        href: '/soluciones/asesoria-financiera',
-        line: 'Empiece por un informe gratuito',
-      },
-    ],
-  },
-  {
     title: 'Inteligencia de negocio',
     lead: 'Cuadros de mando por rol que se actualizan solos.',
     items: [
