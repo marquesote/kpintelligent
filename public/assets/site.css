@@ -52,3 +52,21 @@ figure.develop { margin: 0 0 var(--s-6); --ratio: 26%; }
   #demo .frame { --ratio: 30%; }
 }
 @media (max-width: 639px) { #demo .frame { --ratio: 231%; } }
+
+/* the hero's title is sized to its card as well as to the screen, so a word never breaks across lines: at about
+   1000 to 1150 wide "Consultora" was wider than the card at the full size. A word of 10 letters is 4.7 times the
+   size, so a fifth of the card's width is the most it can take */
+.hero--photo .hero__text { container-type: inline-size; }
+.hero--photo h1 { font-size: min(var(--ly-h1-xl), 20cqi); }
+
+/* a section is at least one screen and grows past it rather than lay its last rows over the next one (on a
+   short screen the cases list ran 150px into the method). The block that fills the screen keeps at least its
+   content's height */
+@media (min-width: 640px) {
+  :where(main > :is(section, .section):not(.hero, .section--hero)) { display: flex; flex-direction: column; }
+  main > :is(section, .section):not(.hero, .section--hero) {
+    height: auto; min-height: calc(var(--h, 1) * 100vh); min-height: calc(var(--h, 1) * 100svh);
+  }
+  main > :is(section, .section):not(.hero, .section--hero) > :is(.wrap, .container) { flex: 1 0 auto; height: auto; min-height: 0; }
+  main > :is(section, .section) > .wrap > .fill { min-height: auto; }
+}
