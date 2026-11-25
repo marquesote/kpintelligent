@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { siteConfig } from '@/config/siteConfig'
 import { MailNotConfiguredError, sendNotice } from '@/lib/email/smtp'
+import { ADVISORY_CONSENT } from '@/features/site/advisory'
 
 function escapeHtml(value: string): string {
   return value
@@ -18,9 +19,18 @@ export async function POST(request: NextRequest) {
       ? await request.json()
       : Object.fromEntries(await request.formData())
 
-    const { name, email, message } = body
+    const { name, email } = body
     const phone = typeof body.phone === 'string' ? body.phone : ''
     const company = typeof body.company === 'string' ? body.company : ''
+    const role = typeof body.role === 'string' ? body.role : ''
+    const isReport = body.kind === 'informe'
+    const acceptedAt = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
+    // the report request has no message: it is built from the company and the permission the person accepted
+    const message = isReport
+      ? `Petición del informe financiero de la empresa: ${company.trim()}
+Cargo: ${role.trim() || 'No indicado'}
+Permiso aceptado el ${acceptedAt}: «${ADVISORY_CONSENT}»`
+      : body.message
 
     // Validate
     if (!name || typeof name !== 'string' || name.trim().length < 2) {
@@ -28,6 +38,9 @@ export async function POST(request: NextRequest) {
     }
     if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: 'Email inválido' }, { status: 400 })
+    }
+    if (isReport && (company.trim().length < 2 || body.consent !== 'si')) {
+      return NextResponse.json({ error: 'Faltan la empresa o el permiso' }, { status: 400 })
     }
     if (!message || typeof message !== 'string' || message.trim().length < 10) {
       return NextResponse.json({ error: 'Mensaje inválido' }, { status: 400 })
@@ -38,7 +51,7 @@ export async function POST(request: NextRequest) {
     try {
       await sendNotice({
           replyTo: email.trim(),
-          subject: `Solicitud de demo de ${name.trim().replace(/\s+/g, ' ')}`,
+          subject: `${isReport ? 'Petición de informe financiero' : 'Solicitud de demo'} de ${name.trim().replace(/\s+/g, ' ')}`,
           html: `
             <h2>Nuevo mensaje de contacto</h2>
             <p><strong>Nombre:</strong> ${escapeHtml(name.trim())}</p>
