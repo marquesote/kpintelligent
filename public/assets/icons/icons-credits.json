@@ -1,5 +1,17 @@
 [
   {
+    "file": "anthropic.svg",
+    "icon": "logos:anthropic-icon",
+    "name": "Anthropic",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://www.anthropic.com/"
+  },
+  {
     "file": "aws.svg",
     "icon": "logos:aws",
     "name": "AWS",
@@ -24,6 +36,18 @@
     "markUrl": "https://azure.microsoft.com/"
   },
   {
+    "file": "gmail.svg",
+    "icon": "logos:google-gmail",
+    "name": "Gmail",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://gmail.com/"
+  },
+  {
     "file": "google-cloud.svg",
     "icon": "logos:google-cloud",
     "name": "Google Cloud",
@@ -34,6 +58,18 @@
     "url": "https://github.com/gilbarbara/logos",
     "trademark": true,
     "markUrl": "https://cloud.google.com/"
+  },
+  {
+    "file": "google-sheets.svg",
+    "icon": "si:googlesheets",
+    "name": "Google Sheets",
+    "kind": "mono",
+    "source": "simple-icons@16.30.0",
+    "author": "Simple Icons Collaborators",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/simple-icons/simple-icons",
+    "trademark": true,
+    "colour": "one-colour fallback in the brand hex"
   },
   {
     "file": "hubspot.svg",
@@ -60,6 +96,30 @@
     "markUrl": "https://www.looker.com/"
   },
   {
+    "file": "make.svg",
+    "icon": "si:make",
+    "name": "Make",
+    "kind": "mono",
+    "source": "simple-icons@16.30.0",
+    "author": "Simple Icons Collaborators",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/simple-icons/simple-icons",
+    "trademark": true,
+    "colour": "one-colour fallback in the brand hex"
+  },
+  {
+    "file": "n8n.svg",
+    "icon": "logos:n8n-icon",
+    "name": "n8n",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://n8n.io"
+  },
+  {
     "file": "odoo.svg",
     "icon": "si:odoo",
     "name": "Odoo",
@@ -70,6 +130,18 @@
     "url": "https://github.com/simple-icons/simple-icons",
     "trademark": true,
     "colour": "one-colour fallback in the brand hex"
+  },
+  {
+    "file": "openai.svg",
+    "icon": "logos:openai-icon",
+    "name": "OpenAI",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://openai.com/"
   },
   {
     "file": "power-bi.svg",
@@ -120,6 +192,18 @@
     "markUrl": "https://www.sap.com/"
   },
   {
+    "file": "slack.svg",
+    "icon": "logos:slack-icon",
+    "name": "Slack",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://slack.com/"
+  },
+  {
     "file": "tableau.svg",
     "icon": "logos:tableau-icon",
     "name": "Tableau",
@@ -130,6 +214,18 @@
     "url": "https://github.com/gilbarbara/logos",
     "trademark": true,
     "markUrl": "https://www.tableau.com/"
+  },
+  {
+    "file": "teams.svg",
+    "icon": "logos:microsoft-teams",
+    "name": "Microsoft Teams",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://teams.com/"
   },
   {
     "file": "ui-database.svg",
@@ -143,6 +239,18 @@
     "trademark": false
   },
   {
+    "file": "whatsapp.svg",
+    "icon": "logos:whatsapp-icon",
+    "name": "WhatsApp",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://www.whatsapp.com/"
+  },
+  {
     "file": "xlsx.svg",
     "icon": "file:file-type-excel",
     "name": "Excel workbook",
@@ -152,5 +260,17 @@
     "licence": "MIT",
     "url": "https://github.com/vscode-icons/vscode-icons",
     "trademark": false
+  },
+  {
+    "file": "zapier.svg",
+    "icon": "logos:zapier",
+    "name": "Zapier",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://zapier.com/"
   }
 ]

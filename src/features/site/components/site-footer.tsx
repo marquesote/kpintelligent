@@ -1,4 +1,5 @@
-import { MAIN_ACTION, solutionGroups } from '../content'
+import { MAIN_ACTION, aiFooterGroup, solutionGroups } from '../content'
+import { DataBand } from './live/screens'
 import { Arrow } from './arrow'
 
 interface SiteFooterProps {
@@ -10,7 +11,7 @@ export function SiteFooter({ base }: SiteFooterProps) {
     <>
       <footer className="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
         <div className="wrap">
-          <div className="closing__cta close--photo">
+          <div className="closing__cta close--photo lv-close">
             <div className="section-head--split">
               <div>
                 <h2 id="close-h">Una demo gratuita de BI e IA</h2>
@@ -22,19 +23,7 @@ export function SiteFooter({ base }: SiteFooterProps) {
               </a>
             </div>
             <div className="close__media">
-              <picture>
-                <source media="(max-width: 639px)" srcSet="/assets/img/photo-f198698611-phone.webp" />
-                <img
-                  src="/assets/img/photo-f198698611-band.webp"
-                  width={1920}
-                  height={500}
-                  alt="Línea de producción automatizada vista desde arriba"
-                  loading="lazy"
-                  decoding="async"
-                  data-source="stand-in"
-                  data-subject="stand-in"
-                />
-              </picture>
+              <DataBand />
             </div>
           </div>
           <div className="closing__links">
@@ -45,7 +34,7 @@ export function SiteFooter({ base }: SiteFooterProps) {
                   KPIntelligent
                 </a>
               </div>
-              {solutionGroups.map((group) => (
+              {[...solutionGroups, aiFooterGroup].map((group) => (
                 <div className="span-2 footer__col" key={group.title}>
                   <h3>{group.title}</h3>
                   <ul>
@@ -66,9 +55,6 @@ export function SiteFooter({ base }: SiteFooterProps) {
               <div className="socials" />
               <a className="credits" href="/privacidad">
                 Política de privacidad
-              </a>
-              <a className="credits" href="/credits.html">
-                Fotografías vía Wikimedia Commons
               </a>
             </div>
           </div>

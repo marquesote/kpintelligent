@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image' },
   icons: { icon: '/favicon.png' },
-  other: { 'site-kind': 'other', 'page-type': 'service' },
+  other: { 'site-kind': 'software', 'page-type': 'service' },
 }
 
 export const viewport: Viewport = {
@@ -43,13 +43,13 @@ const KIT_STYLES = [
   '/assets/icons/icon.css',
   '/assets/diagrams/diagram.css',
   '/assets/site.css',
+  '/assets/live.css',
 ]
 
 const MOMENT_MODULES = [
   '/assets/moments/moments.js',
   '/assets/moments/lib.js',
   '/assets/moments/word-highlight/moment.js',
-  '/assets/moments/picture-develops/moment.js',
 ]
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {

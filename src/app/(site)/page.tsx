@@ -2,8 +2,10 @@ import type { CSSProperties } from 'react'
 import { SiteNav } from '@/features/site/components/site-nav'
 import { SiteFooter } from '@/features/site/components/site-footer'
 import { Arrow } from '@/features/site/components/arrow'
-import { Photo } from '@/features/site/components/photo'
-import { photos } from '@/features/site/photos'
+import { HoloHero } from '@/features/site/components/live/holo-hero'
+import { AiServicesSection, AutomationSection } from '@/features/site/components/live/ai-sections'
+import { CaseScreen, LiveDashboard, PipelineBand } from '@/features/site/components/live/screens'
+import { AssistantChat } from '@/features/site/components/live/assistant-chat'
 import {
   MAIN_ACTION,
   biTools,
@@ -14,12 +16,10 @@ import {
   steps,
 } from '@/features/site/content'
 
-/* type: service (site-kind other)
-   deal: hero photo, nav nav-mega, close close-photo, footer footer-dark, rhythm surface-pairs,
-         buttons solid, mark the client's own logo, grounds none
-   palette: the client's own (start.mjs brand): the logo's blue as the one accent on a paper ground
-   type: Newsreader / Hanken Grotesk
-   moments: word-highlight (#empresa, the statement), picture-develops (#metodo, its photograph)
+/* V4: the V2 page (paper ground, the logo's blue, Newsreader / Hanken Grotesk) with moving pictures in place of
+   the photographs: a holographic dashboard in the hero, live screens (a dashboard, the cases, an automation, an
+   assistant) in the sections, and the new "IA y automatización" sections after the hero.
+   moments: word-highlight (#empresa, the statement)
    Every section is one screen at 1440 (two on a phone where --hm says so). */
 
 const twoPhoneScreens = { '--hm': 2 } as CSSProperties
@@ -46,44 +46,11 @@ export default function HomePage() {
       <SiteNav base="" />
 
       <main id="top">
-        <section className="hero hero--photo" data-enter="" data-calm="right" aria-labelledby="hero-h">
-          <picture className="hero__bg" data-phone-fill="">
-            <source
-              media="(max-width: 639px)"
-              srcSet="/assets/img/photo-f134195982-780x975.webp 780w"
-              sizes="100vw"
-            />
-            <img
-              src="/assets/img/photo-f134195982.webp"
-              srcSet="/assets/img/photo-f134195982-500.webp 500w, /assets/img/photo-f134195982-960.webp 960w, /assets/img/photo-f134195982-1280.webp 1280w, /assets/img/photo-f134195982.webp 1920w"
-              sizes="100vw"
-              width={1920}
-              height={1381}
-              alt={photos.racks.alt}
-              fetchPriority="high"
-              decoding="async"
-              data-source="stand-in"
-              data-subject="stand-in"
-              style={{ '--ly-pos': '20% 50%', '--ly-pos-phone': '30% 50%' } as CSSProperties}
-            />
-          </picture>
-          <div className="wrap">
-            <div className="hero-text">
-              <div className="hero__text">
-                <h1 id="hero-h">Consultora de datos en Madrid</h1>
-                <p className="hero__lead">
-                  Unimos tu ERP, tu CRM y tus hojas de cálculo en una única fuente de verdad. Una cadena de
-                  más de 50 tiendas pasó de 3 días a 3 horas en sus informes.
-                </p>
-                <div className="btn-row">
-                  <a className="btn btn--primary" href="#demo">
-                    {MAIN_ACTION}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HoloHero />
+
+        <AiServicesSection />
+
+        <AutomationSection />
 
         <section className="section" id="soluciones" style={twoPhoneScreens} aria-labelledby="soluciones-h">
           <div className="wrap">
@@ -100,8 +67,8 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <div className="frame frame--photo frame--fill span-6 start-7">
-                <Photo photo={photos.workshop} />
+              <div className="span-6 start-7 lv-fill">
+                <LiveDashboard />
               </div>
             </div>
           </div>
@@ -132,7 +99,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="panel span-6 start-7" data-icon-base="/assets/icons" data-dg-still="">
+            <div className="panel span-6 start-7 ground-inverse lv-dgpanel" data-icon-base="/assets/icons">
               <div className="dg" data-diagram={JSON.stringify(sourcesDiagram)} />
             </div>
           </div>
@@ -173,9 +140,11 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <div className="frame frame--photo frame--fill span-6 start-7">
+              <div className="span-6 start-7 lv-fill">
                 {cases.map((item, i) => (
-                  <Photo photo={item.photo} peekFor={item.key} hidden={i > 0} key={item.key} />
+                  <div className="lv-peek" data-peek-for={item.key} hidden={i > 0} key={item.key}>
+                    <CaseScreen kind={item.key} />
+                  </div>
                 ))}
               </div>
             </div>
@@ -187,9 +156,7 @@ export default function HomePage() {
             <div className="section-head">
               <h2 id="metodo-h">Un método en 6 pasos</h2>
             </div>
-            <figure className="frame frame--photo develop" data-moment="picture-develops">
-              <Photo photo={photos.aisle} sizes="100vw" />
-            </figure>
+            <PipelineBand steps={steps} />
             <div className="grid grid--top steps">
               {[0, 2, 4].map((start) => (
                 <ol className="rows span-4" start={start + 1} key={start}>
@@ -284,8 +251,8 @@ export default function HomePage() {
                 <p className="form__status" role="status" data-form-status="" />
               </form>
             </div>
-            <div className="frame frame--photo span-6 start-7">
-              <Photo photo={photos.meeting} />
+            <div className="span-6 start-7 lv-fill">
+              <AssistantChat />
             </div>
           </div>
         </section>

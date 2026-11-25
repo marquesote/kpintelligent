@@ -1080,6 +1080,141 @@ export const solutionsContent: Record<string, SolutionPage> = {
       },
     ],
   },
+  // ==========================================
+  // IA Y AUTOMATIZACIÓN
+  // ==========================================
+
+  'auditoria-ia': {
+    slug: 'auditoria-ia',
+    category: 'IA y Automatización',
+    categorySlug: 'consultoria',
+    title: 'Auditoría de IA',
+    subtitle: 'Te decimos qué procesos de tu empresa automatizar primero con IA y cuánto tiempo ahorra cada uno',
+    description: 'Antes de construir nada, revisamos cómo trabaja de verdad tu empresa: qué tareas se repiten, cuánto tiempo se llevan, en qué sistemas viven los datos y dónde se cometen errores. Con eso preparamos un mapa de oportunidades ordenado por impacto y esfuerzo, con una recomendación clara de por dónde empezar y qué no merece la pena automatizar.',
+    features: [
+      { icon: 'map', title: 'Mapa de procesos', description: 'Entrevistamos a las personas que hacen el trabajo y recorremos cada proceso de principio a fin: quién hace qué, con qué herramienta y cuánto tarda.' },
+      { icon: 'data', title: 'Revisión de tus datos', description: 'Comprobamos qué datos tienes en el ERP, el CRM y las hojas de cálculo, su calidad y si están listos para que la IA trabaje con ellos.' },
+      { icon: 'priority', title: 'Oportunidades priorizadas', description: 'Cada oportunidad lleva su ahorro estimado, su dificultad y sus riesgos, para que decidas con números y no con intuiciones.' },
+      { icon: 'plan', title: 'Hoja de ruta', description: 'Terminas con un plan por fases: el primer proceso a automatizar, lo que viene después y lo que hace falta preparar en tus datos.' },
+    ],
+    benefits: [
+      { metric: '1.º', label: 'Por dónde empezar', description: 'Una recomendación concreta del proceso que más rinde con menos esfuerzo.' },
+      { metric: 'Horas', label: 'Ahorro estimado', description: 'Las horas al mes que libera cada automatización, calculadas con tus propios procesos.' },
+      { metric: 'Riesgos', label: 'A la vista', description: 'Qué datos, permisos o dependencias hay que resolver antes de automatizar.' },
+      { metric: 'Tuyo', label: 'El plan es tuyo', description: 'Puedes ejecutarlo con nosotros, con tu equipo o con otro proveedor.' },
+    ],
+    useCases: [
+      { sector: 'Administración', title: 'Facturas y conciliaciones', description: 'Identificamos cuánto tiempo se va en registrar facturas de proveedor y cuadrar el banco, y qué parte puede hacer la IA.' },
+      { sector: 'Comercial', title: 'Seguimiento de clientes', description: 'Revisamos cómo se registran las oportunidades en el CRM y qué avisos y resúmenes pueden prepararse solos.' },
+      { sector: 'Dirección', title: 'Informes mensuales', description: 'Medimos el trabajo manual del cierre de mes y proponemos cómo dejar los informes listos el primer día.' },
+    ],
+    technologies: ['Power BI', 'SAP', 'Odoo', 'Salesforce', 'HubSpot', 'n8n', 'Make', 'OpenAI', 'Claude (Anthropic)'],
+    relatedSolutions: ['automatizacion-procesos', 'agentes-ia', 'formacion-ia'],
+    faq: [
+      { question: '¿Qué necesitáis de nosotros para la auditoría?', answer: 'Unas horas de las personas que hacen cada proceso y acceso de lectura a los sistemas que usan. No tocamos vuestros datos ni vuestra configuración.' },
+      { question: '¿Y si la IA no es la respuesta?', answer: 'Te lo decimos. A veces basta con ordenar un proceso o con una regla sencilla en el ERP; el informe lo recoge igual.' },
+      { question: '¿Estamos obligados a contratar la implantación?', answer: 'No. La hoja de ruta es tuya y está pensada para que cualquiera pueda ejecutarla.' },
+    ],
+  },
+
+  'agentes-ia': {
+    slug: 'agentes-ia',
+    category: 'IA y Automatización',
+    categorySlug: 'ia',
+    title: 'Agentes de IA',
+    subtitle: 'Agentes que consultan tus sistemas, preparan informes y avisan cuando algo se sale de lo previsto',
+    description: 'Un agente de IA no solo contesta: hace tareas. Lo conectamos a tu ERP, tu CRM, tu correo y tus cuadros de mando con permisos limitados, para que prepare el resumen de ventas del lunes, revise los cobros pendientes, redacte la respuesta a un cliente o avise cuando un margen cae. Tu equipo aprueba lo importante y el agente se encarga del resto.',
+    features: [
+      { icon: 'connect', title: 'Conectados a tus sistemas', description: 'Leen y, si lo autorizas, escriben en el ERP, el CRM, el correo o Teams, siempre con permisos acotados y registro de cada acción.' },
+      { icon: 'tasks', title: 'Tareas de principio a fin', description: 'Preparan informes, clasifican correos, actualizan fichas de clientes o cruzan datos entre sistemas sin que nadie copie y pegue.' },
+      { icon: 'alert', title: 'Avisos con contexto', description: 'Vigilan tus indicadores y te escriben cuando algo cambia, explicando qué ha pasado y con el dato que lo demuestra.' },
+      { icon: 'human', title: 'Una persona decide', description: 'Las acciones sensibles quedan pendientes de aprobación. Tú decides qué hace solo y qué te consulta.' },
+    ],
+    benefits: [
+      { metric: '24/7', label: 'Siempre atentos', description: 'Los agentes vigilan tus datos a cualquier hora y te avisan solo cuando hace falta.' },
+      { metric: 'Trazables', label: 'Cada acción registrada', description: 'Sabes qué hizo el agente, cuándo y con qué datos.' },
+      { metric: 'A medida', label: 'Tus procesos', description: 'Se construyen sobre cómo trabaja tu empresa, no sobre una plantilla genérica.' },
+      { metric: 'Tuyos', label: 'Código y datos', description: 'El agente, su lógica y tus datos son de tu empresa.' },
+    ],
+    useCases: [
+      { sector: 'Dirección', title: 'Resumen semanal', description: 'Cada lunes, un resumen de ventas, márgenes y tesorería con lo que ha cambiado y por qué, en tu correo o en Teams.' },
+      { sector: 'Finanzas', title: 'Vigilancia de cobros', description: 'El agente revisa la cartera, detecta los clientes que se retrasan y prepara los recordatorios para que el equipo los envíe.' },
+      { sector: 'Comercial', title: 'CRM al día', description: 'Después de cada reunión, el agente resume el correo o las notas y actualiza la oportunidad en el CRM.' },
+    ],
+    technologies: ['OpenAI', 'Claude (Anthropic)', 'Azure OpenAI', 'n8n', 'Make', 'Microsoft Teams', 'SAP', 'Odoo', 'Salesforce', 'HubSpot'],
+    relatedSolutions: ['automatizacion-procesos', 'ia-generativa-chatbots', 'auditoria-ia'],
+    faq: [
+      { question: '¿Qué diferencia hay entre un agente y un chatbot?', answer: 'El chatbot responde preguntas; el agente, además, hace cosas en tus sistemas: consulta, prepara, registra y avisa, dentro de los permisos que le des.' },
+      { question: '¿Puede el agente equivocarse?', answer: 'Puede, como cualquier sistema. Por eso trabaja con permisos acotados, deja registro de todo y las acciones importantes esperan la aprobación de una persona.' },
+      { question: '¿Nuestros datos salen de la empresa?', answer: 'Usamos modelos con acuerdos de confidencialidad que no entrenan con tus datos y, cuando hace falta, desplegados en la nube europea de tu empresa.' },
+    ],
+  },
+
+  'automatizacion-procesos': {
+    slug: 'automatizacion-procesos',
+    category: 'IA y Automatización',
+    categorySlug: 'automatizacion',
+    title: 'Automatización de Procesos',
+    subtitle: 'Facturas, conciliaciones, pedidos y correos que se procesan solos, con una persona revisando las excepciones',
+    description: 'Automatizamos el trabajo que se repite cada día y que hoy se hace copiando datos entre el correo, las hojas de cálculo y el ERP. La IA lee documentos y correos, los cruza con tus sistemas y registra lo que corresponde; lo que no cuadra llega a la persona adecuada con el motivo. Empezamos por un proceso, lo probamos con tus casos reales y lo vigilamos una vez en marcha.',
+    features: [
+      { icon: 'documents', title: 'Documentos que se leen solos', description: 'Facturas, albaranes, pedidos y contratos en PDF o por correo: la IA extrae los datos y los valida antes de registrarlos.' },
+      { icon: 'integration', title: 'Conectado a tu ERP', description: 'Las automatizaciones trabajan sobre SAP, Odoo, Navision o tu sistema, sin cambiar cómo trabaja tu equipo.' },
+      { icon: 'exceptions', title: 'Excepciones a una persona', description: 'Lo que no cuadra no se registra: llega a quien corresponde, con el motivo y el documento.' },
+      { icon: 'monitor', title: 'Vigilancia continua', description: 'Cada ejecución queda registrada y te avisamos si un proceso falla o cambia el formato de un proveedor.' },
+    ],
+    benefits: [
+      { metric: 'Sin teclear', label: 'Menos copia a mano', description: 'Los datos pasan del documento al sistema sin que nadie los copie a mano.' },
+      { metric: 'Validado', label: 'Menos errores', description: 'Importes, proveedores y pedidos se comprueban antes de registrar nada.' },
+      { metric: '24/7', label: 'Siempre en marcha', description: 'Los documentos se procesan cuando llegan, también fuera de horario.' },
+      { metric: 'Trazable', label: 'Todo registrado', description: 'Cada paso queda guardado para auditoría y control.' },
+    ],
+    useCases: [
+      { sector: 'Administración', title: 'Facturas de proveedor', description: 'La factura llega al correo, la IA la lee, la cruza con el pedido y el albarán en el ERP y prepara el asiento.' },
+      { sector: 'Tesorería', title: 'Conciliación bancaria', description: 'Los movimientos del banco se cruzan con facturas y cobros; solo los que no cuadran necesitan revisión.' },
+      { sector: 'Ventas', title: 'Pedidos por correo', description: 'Los pedidos que llegan por correo o en PDF se convierten en pedidos del ERP, listos para servir.' },
+    ],
+    technologies: ['n8n', 'Make', 'Zapier', 'Power Automate', 'OpenAI', 'Claude (Anthropic)', 'SAP', 'Odoo', 'Microsoft Teams', 'Gmail y Outlook'],
+    relatedSolutions: ['agentes-ia', 'auditoria-ia', 'reporting-automatizado'],
+    faq: [
+      { question: '¿n8n, Make o Zapier, o código a medida?', answer: 'Depende del proceso. Las herramientas de automatización son rápidas y fáciles de mantener; el código a medida se reserva para volúmenes altos o reglas complejas. Te recomendamos la opción más sencilla que funcione.' },
+      { question: '¿Qué pasa si un proveedor cambia el formato de su factura?', answer: 'La IA se adapta a la mayoría de cambios. Si algo no cuadra, la factura va a revisión en lugar de registrarse mal, y te avisamos.' },
+      { question: '¿Cuánto se tarda en tener el primer proceso funcionando?', answer: 'Depende del proceso y de tus sistemas. Empezamos por uno acotado para que veas resultados pronto y sumamos los siguientes después.' },
+    ],
+  },
+
+  'formacion-ia': {
+    slug: 'formacion-ia',
+    category: 'IA y Automatización',
+    categorySlug: 'bi',
+    title: 'Formación en IA',
+    subtitle: 'Formamos a tu equipo para que use la IA y los datos en su trabajo de cada día',
+    description: 'La IA solo rinde si la gente la usa. Preparamos talleres prácticos con los casos y las herramientas de tu empresa: cómo preguntar a la IA, cómo revisar lo que responde, cómo automatizar una tarea sencilla y cómo leer los cuadros de mando. Después seguimos a tu lado con soporte para resolver dudas y vigilar que cada automatización siga funcionando.',
+    features: [
+      { icon: 'workshop', title: 'Talleres con tus casos', description: 'Nada de ejemplos genéricos: practicamos con tus informes, tus documentos y tus procesos.' },
+      { icon: 'roles', title: 'Por perfil', description: 'Dirección, finanzas, comercial y operaciones aprenden lo que les sirve a cada uno.' },
+      { icon: 'safety', title: 'Uso seguro', description: 'Qué datos se pueden compartir con la IA, cómo comprobar sus respuestas y qué reglas seguir en la empresa.' },
+      { icon: 'support', title: 'Soporte continuo', description: 'Resolvemos dudas, mejoramos las automatizaciones y vigilamos que todo siga funcionando.' },
+    ],
+    benefits: [
+      { metric: 'Práctica', label: 'Desde el primer día', description: 'Cada persona sale del taller con algo que ya usa en su trabajo.' },
+      { metric: 'Reglas', label: 'Uso seguro', description: 'El equipo sabe qué puede hacer con la IA y qué no.' },
+      { metric: 'Autonomía', label: 'Menos dependencia', description: 'Tu equipo resuelve por su cuenta las tareas sencillas.' },
+      { metric: 'Soporte', label: 'Después también', description: 'Seguimos disponibles cuando surgen dudas o cambian los procesos.' },
+    ],
+    useCases: [
+      { sector: 'Dirección', title: 'IA para managers', description: 'Cómo pedir análisis a la IA, leer los cuadros de mando y decidir qué automatizar.' },
+      { sector: 'Finanzas', title: 'IA en el cierre', description: 'Preparar conciliaciones, revisar desviaciones y redactar el informe de cierre con ayuda de la IA.' },
+      { sector: 'Equipos', title: 'Automatiza lo que repites', description: 'Cada persona automatiza una tarea propia con herramientas sencillas y supervisadas.' },
+    ],
+    technologies: ['Microsoft Copilot', 'ChatGPT Enterprise', 'Claude (Anthropic)', 'Power BI', 'n8n', 'Make'],
+    relatedSolutions: ['auditoria-ia', 'agentes-ia', 'dashboards-interactivos'],
+    faq: [
+      { question: '¿Hace falta saber programar?', answer: 'No. Los talleres están pensados para personas de negocio; los perfiles técnicos pueden ir un paso más allá.' },
+      { question: '¿Los talleres son presenciales?', answer: 'Pueden ser en vuestras oficinas en Madrid o por videollamada, según os venga mejor.' },
+      { question: '¿Qué incluye el soporte continuo?', answer: 'Resolución de dudas, ajustes de las automatizaciones y revisión periódica de que todo sigue funcionando.' },
+    ],
+  },
 }
 
 export function getSolutionBySlug(slug: string): SolutionPage | undefined {

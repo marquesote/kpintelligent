@@ -2,15 +2,51 @@ import type { SolutionPage } from '@/data/solutionsContent'
 import { getSolutionBySlug } from '@/data/solutionsContent'
 import { MAIN_ACTION } from '../content'
 import { Arrow } from './arrow'
-import { Photo } from './photo'
-import { photos, type SitePhoto } from '../photos'
+import { invoiceFlow } from '../content'
+import { AssistantChat } from './live/assistant-chat'
+import { FlowScreen, LiveDashboard, ReportScreen } from './live/screens'
 
-/* one photograph per service area, each also used on the home page (never twice on one page) */
-const categoryPhotos: Record<string, SitePhoto> = {
-  bi: photos.workshop,
-  'data-engineering': photos.aisle,
-  ia: photos.racks,
-  consultoria: photos.bank,
+/* one moving picture per service area, in place of a photograph */
+const etlFlow = {
+  title: 'Ingeniería de datos · carga nocturna',
+  label: 'Los datos del ERP, el CRM y las hojas de cálculo se extraen, se limpian y se cargan en el almacén, y Power BI se actualiza.',
+  nodes: [
+    { label: 'ERP', sub: 'SAP · Odoo', icon: 'sap' },
+    { label: 'CRM', sub: 'Salesforce', icon: 'salesforce' },
+    { label: 'Limpieza', sub: 'Reglas de calidad', glyph: 'M3 6h18M7 12h10M10 18h4' },
+    { label: 'Almacén', sub: 'Una sola verdad', icon: 'ui-database' },
+    { label: 'Power BI', sub: 'Actualizado', icon: 'power-bi' },
+  ],
+  log: [
+    '02:00 Extracción del ERP: 18 tablas',
+    '02:06 Extracción del CRM: oportunidades y cuentas',
+    '02:09 Duplicados y errores corregidos',
+    '02:12 Almacén actualizado',
+    '02:13 Informes de Power BI listos para el día',
+  ],
+}
+
+function CategoryVisual({ category }: { category: string }) {
+  switch (category) {
+    case 'data-engineering':
+      return <FlowScreen {...etlFlow} />
+    case 'ia':
+      return <AssistantChat />
+    case 'automatizacion':
+      return <FlowScreen {...invoiceFlow} />
+    case 'consultoria':
+      return (
+        <ReportScreen
+          src="matriz"
+          title="Diagnóstico · cuadro de indicadores"
+          label="Un cuadro de indicadores de la empresa que se revisa línea a línea."
+          chips={['Eficiencia operativa', 'Deuda financiera', 'Rentabilidad', 'Riesgo']}
+          eager
+        />
+      )
+    default:
+      return <LiveDashboard />
+  }
 }
 
 function splitDescription(description: string): {
@@ -26,7 +62,6 @@ function splitDescription(description: string): {
 }
 
 export function SolutionSections({ solution }: { solution: SolutionPage }) {
-  const photo = categoryPhotos[solution.categorySlug] ?? categoryPhotos.bi
   const { first, rest } = splitDescription(solution.description)
   const related = solution.relatedSolutions
     .map((slug) => getSolutionBySlug(slug))
@@ -50,8 +85,8 @@ export function SolutionSections({ solution }: { solution: SolutionPage }) {
                 </a>
               </div>
             </div>
-            <div className="hero-visual frame frame--photo span-6 start-7">
-              <Photo photo={photo} sizes="(max-width: 1023px) 100vw, 70vw" phoneCrop={false} eager />
+            <div className="hero-visual span-6 start-7 lv-fill">
+              <CategoryVisual category={solution.categorySlug} />
             </div>
           </div>
         </div>

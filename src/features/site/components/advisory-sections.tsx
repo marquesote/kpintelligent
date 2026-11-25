@@ -9,8 +9,7 @@ import {
 } from '../advisory'
 import { AdvisoryForm } from './advisory-form'
 import { Arrow } from './arrow'
-import { Photo } from './photo'
-import { photos } from '../photos'
+import { ReportScreen } from './live/screens'
 
 const twoPhoneScreens = { '--hm': 2 } as CSSProperties
 
@@ -35,8 +34,14 @@ function Hero() {
             </div>
             <p className="advisory-note">Gratuito. Sin compromiso. Solo necesitamos el CIF y un correo.</p>
           </div>
-          <div className="hero-visual frame frame--photo span-6 start-7">
-            <Photo photo={photos.meeting} sizes="(max-width: 1023px) 100vw, 70vw" phoneCrop={false} eager />
+          <div className="hero-visual span-6 start-7 lv-fill">
+            <ReportScreen
+              src="pyg-grafico"
+              title="Informe financiero · cuenta de resultados"
+              label="El informe financiero de una empresa leído línea a línea: cuenta de resultados, márgenes y su evolución."
+              chips={['Cuenta de resultados', 'Margen por año', 'Punto muerto', 'Fondo de maniobra']}
+              eager
+            />
           </div>
         </div>
       </div>
@@ -171,8 +176,13 @@ function Request() {
           </div>
           <AdvisoryForm />
         </div>
-        <div className="frame frame--photo span-6 start-7">
-          <Photo photo={photos.bank} />
+        <div className="span-6 start-7 lv-fill">
+          <ReportScreen
+            src="bridge"
+            title="Su informe · en preparación"
+            label="Un informe de la evolución del resultado, de las ventas al beneficio, preparado con las cuentas de la empresa."
+            chips={['Cuentas depositadas', 'Ratios del sector', 'Evolución del resultado']}
+          />
         </div>
       </div>
     </section>

@@ -21,8 +21,7 @@ picture.frame__img > img, .close__media > picture > img { display: block; width:
 .close__media > picture { position: absolute; inset: 0; }
 
 /* inside a visual: the diagram card's height and the tool rows' icons */
-#datos .panel { --p-h: 520px; --ground-bg: var(--p-bg); --ground-surface: var(--p-bg); }
-#datos .dg, #datos .dg * { transition: none !important; }
+#datos .panel { --p-h: 520px; }
 .tools { display: grid; gap: var(--s-4); margin-top: var(--s-6); }
 .tools > div { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
 .tools .t-label { min-width: 132px; }
