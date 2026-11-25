@@ -5,6 +5,9 @@ import { Arrow } from './arrow'
 import { invoiceFlow } from '../content'
 import { AssistantChat } from './live/assistant-chat'
 import { FlowScreen, LiveDashboard, ReportScreen } from './live/screens'
+import { DeepVisual } from './live/screens-ai'
+import { DeepCapabilities, DeepProcess, DeepStats } from './live/deep-sections'
+import { getAiDeep } from '@/data/aiDeepContent'
 
 /* one moving picture per service area, in place of a photograph */
 const etlFlow = {
@@ -63,6 +66,7 @@ function splitDescription(description: string): {
 
 export function SolutionSections({ solution }: { solution: SolutionPage }) {
   const { first, rest } = splitDescription(solution.description)
+  const deep = getAiDeep(solution.slug)
   const related = solution.relatedSolutions
     .map((slug) => getSolutionBySlug(slug))
     .filter((item): item is SolutionPage => Boolean(item))
@@ -86,7 +90,7 @@ export function SolutionSections({ solution }: { solution: SolutionPage }) {
               </div>
             </div>
             <div className="hero-visual span-6 start-7 lv-fill">
-              <CategoryVisual category={solution.categorySlug} />
+              {deep ? <DeepVisual kind={deep.hero} eager /> : <CategoryVisual category={solution.categorySlug} />}
             </div>
           </div>
         </div>
@@ -103,6 +107,8 @@ export function SolutionSections({ solution }: { solution: SolutionPage }) {
           <p className="mo-wh__text">{solution.subtitle}.</p>
         </div>
       </section>
+
+      {deep ? <DeepStats deep={deep} /> : null}
 
       <section
         className="section ground-surface"
@@ -127,6 +133,9 @@ export function SolutionSections({ solution }: { solution: SolutionPage }) {
           </ul>
         </div>
       </section>
+
+      {deep ? <DeepCapabilities deep={deep} /> : null}
+      {deep ? <DeepProcess deep={deep} /> : null}
 
       <section
         className="section"

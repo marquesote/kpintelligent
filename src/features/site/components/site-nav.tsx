@@ -1,3 +1,4 @@
+import { MiniViz } from './live/mini-viz'
 import { MAIN_ACTION, aiMenu, navWords, solutionGroups, type SolutionGroup } from '../content'
 
 interface SiteNavProps {
@@ -39,6 +40,7 @@ function MenuItem({
           ))}
           {wide ? (
             <a className="menu-promo" href="/soluciones/auditoria-ia">
+              <MiniViz kind="radar" />
               <span className="lv-live" /> Auditoría de IA
               <span>Te decimos qué automatizar primero en tu empresa.</span>
             </a>
