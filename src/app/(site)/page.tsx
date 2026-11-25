@@ -225,7 +225,7 @@ export default function HomePage() {
                 data-endpoint="/api/contact"
                 data-sending="Enviando"
                 data-sent="Tu solicitud de demo está enviada. Te escribimos para fijar la fecha."
-                data-failed="No se ha enviado: ha fallado la conexión. Lo que has escrito sigue aquí; inténtalo de nuevo."
+                data-failed="No se ha enviado. Lo que has escrito sigue aquí: inténtalo de nuevo o escríbenos a marques@kpintelligent.es."
                 noValidate
               >
                 <div className="field">

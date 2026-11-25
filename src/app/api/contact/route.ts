@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { siteConfig } from '@/config/siteConfig'
+import { MailNotConfiguredError, sendNotice } from '@/lib/email/smtp'
 
 function escapeHtml(value: string): string {
   return value
@@ -32,15 +33,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Mensaje inválido' }, { status: 400 })
     }
 
-    // Try to send email via Resend if configured
-    if (process.env.RESEND_API_KEY) {
-      try {
-        const { Resend } = await import('resend')
-        const resend = new Resend(process.env.RESEND_API_KEY)
-
-        await resend.emails.send({
-          from: 'noreply@resend.dev',
-          to: siteConfig.contact.email,
+    // The notice goes out through the kpintelligent.es mailbox. If it cannot be sent the visitor is told so
+    // (the form keeps what they wrote): a request is never reported as sent when nobody received it.
+    try {
+      await sendNotice({
+          replyTo: email.trim(),
           subject: `Solicitud de demo de ${name.trim().replace(/\s+/g, ' ')}`,
           html: `
             <h2>Nuevo mensaje de contacto</h2>
@@ -53,19 +50,15 @@ export async function POST(request: NextRequest) {
             <hr>
             <p style="color:#666;font-size:12px;">Enviado desde el formulario de contacto de ${siteConfig.companyName}</p>
           `,
-        })
-      } catch (emailError) {
-        console.error('Error sending email:', emailError)
-        // Continue - don't fail the request just because email didn't send
-      }
-    } else {
-      console.log('Contact form submission (RESEND_API_KEY not configured):', {
-        name: name.trim(),
-        email: email.trim(),
-        company: company.trim(),
-        phone: phone.trim(),
-        message: message.trim().substring(0, 100) + '...',
       })
+    } catch (emailError) {
+      const notConfigured = emailError instanceof MailNotConfiguredError
+      console.error(
+        notConfigured ? 'Formulario sin enviar: falta configurar el buzón' : 'Formulario sin enviar: el servidor de correo lo rechazó',
+        notConfigured ? '' : emailError,
+        { name: name.trim(), email: email.trim(), company: company.trim() },
+      )
+      return NextResponse.json({ error: 'No se ha podido enviar' }, { status: 502 })
     }
 
     return NextResponse.json({ success: true })
