@@ -70,3 +70,22 @@ figure.develop { margin: 0 0 var(--s-6); --ratio: 26%; }
   main > :is(section, .section):not(.hero, .section--hero) > :is(.wrap, .container) { flex: 1 0 auto; height: auto; min-height: 0; }
   main > :is(section, .section) > .wrap > .fill { min-height: auto; }
 }
+/* five service areas: the mega menu has five equal columns on a desktop; the footer's logo column is two of
+   twelve there and a full row below 1024 */
+@media (min-width: 1024px) {
+  .nav__menu .menu-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .nav__menu .menu-grid > .menu-col { grid-column: auto; }
+}
+@media (max-width: 1023px) { .footer .grid > .span-2.stack-4 { grid-column: 1 / -1; } }
+
+/* asesoría financiera: the note under the hero's button, the FAQ heading beside the audience list, the consent box */
+.advisory-note { margin-top: var(--s-3); font-size: var(--t-small); color: var(--muted); }
+.advisory-faq-h { margin-bottom: var(--s-5); }
+@media (max-width: 1023px) { .advisory-faq-h { margin-top: var(--s-7); } }
+.field--check { grid-template-columns: auto minmax(0, 1fr); align-items: start; column-gap: var(--s-3); font-weight: 400; }
+.field--check input[type="checkbox"] { width: 20px; height: 20px; margin: 2px 0 0; padding: 0; accent-color: var(--action); }
+.field--check .field__error { grid-column: 1 / -1; }
+.field--check input[aria-invalid="true"] { outline: 2px solid var(--error); outline-offset: 2px; }
+#informe .frame { --ratio: 108%; }
+@media (min-width: 640px) and (max-width: 1023px) { #informe .frame { --ratio: 30%; } }
+@media (max-width: 639px) { #informe .frame { display: none; } }

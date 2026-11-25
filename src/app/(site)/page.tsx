@@ -89,7 +89,7 @@ export default function HomePage() {
           <div className="wrap">
             <div className="section-head">
               <h2 id="soluciones-h">Soluciones para cada fase del dato</h2>
-              <p>Doce servicios en cuatro áreas, de la base de datos a la decisión.</p>
+              <p>Trece servicios en cinco áreas, de la base de datos a la decisión.</p>
             </div>
             <div className="grid grid--top fill">
               <ul className="rows span-6">

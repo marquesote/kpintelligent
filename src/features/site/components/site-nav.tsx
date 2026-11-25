@@ -32,7 +32,7 @@ export function SiteNav({ base }: SiteNavProps) {
               </svg>
             </a>
             <div className="nav__menu">
-              <div className="wrap grid">
+              <div className="wrap grid menu-grid">
                 {solutionGroups.map((group) => (
                   <div className="menu-col span-3" key={group.title}>
                     <p className="t-label">{group.title}</p>

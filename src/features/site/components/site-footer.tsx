@@ -39,7 +39,7 @@ export function SiteFooter({ base }: SiteFooterProps) {
           </div>
           <div className="closing__links">
             <div className="grid">
-              <div className="span-4 stack-4">
+              <div className="span-2 stack-4">
                 <a className="nav__logo" href={base === '' ? '#top' : '/'}>
                   <img src="/assets/img/logo-128.png" alt="" width={32} height={32} loading="lazy" />
                   KPIntelligent
