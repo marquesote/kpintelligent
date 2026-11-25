@@ -7,7 +7,7 @@ interface SiteNavProps {
 
 export function SiteNav({ base }: SiteNavProps) {
   return (
-    <header className="nav">
+    <header className="nav nav--centre">
       <div className="wrap nav__bar">
         <a className="skip-link" href="#top">
           Saltar al contenido

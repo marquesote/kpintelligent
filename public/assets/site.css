@@ -1,16 +1,17 @@
-/* KPIntelligent: tokens as start.mjs brand printed them (the logo's blue as the one accent,
-   an off-white paper ground, a navy-black ink) and the page CSS the kit asks for. Linked last. */
+/* KPIntelligent: tokens as start.mjs brand printed them (the logo's electric blue as the one accent on a
+   night ground, a pale blue-white ink) and the page CSS the kit asks for. Linked last. */
 :root {
-  --p-bg: #f6f6f2; --p-surface: #e9eae5; --p-ink: #101a2c; --p-muted: #5e6572;
-  --p-accent: #0b5fd0; --p-accent-ink: #f6f6f2; --p-action: #0b5fd0; --p-action-ink: #f6f6f2;
-  --p-inv-bg: #101a2c; --p-inv-surface: #1d2738; --p-inv-ink: #f6f6f2; --p-inv-muted: #959aa1;
-  --p-inv-accent: #f6f6f2; --p-inv-accent-ink: #101a2c; --p-inv-action: #f6f6f2; --p-inv-action-ink: #101a2c;
-  --font-display: "Newsreader", Georgia, serif;
-  --font-text: "Hanken Grotesk", system-ui, sans-serif;
+  --p-bg: #060a14; --p-surface: #0c1424; --p-ink: #e9f1ff; --p-muted: #98a5bd;
+  --p-accent: #2f8cff; --p-accent-ink: #060a14; --p-action: #2f8cff; --p-action-ink: #060a14;
+  --p-inv-bg: #e9f1ff; --p-inv-surface: #d6deec; --p-inv-ink: #060a14; --p-inv-muted: #505663;
+  --p-inv-accent: #060a14; --p-inv-accent-ink: #e9f1ff; --p-inv-action: #060a14; --p-inv-action-ink: #e9f1ff;
+  --font-display: "Chivo", system-ui, sans-serif;
+  --font-text: "Chivo", system-ui, sans-serif;
+  --font-mono: "Chivo Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --display-weight: 400;
-  --display-tracking: -0.018em;
-  --display-tracking-xl: -0.025em;
-  --ly-scale: 1.06;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+  --ly-scale: 0.96;
 }
 
 /* the client's own logo in the nav and the footer */
@@ -21,20 +22,12 @@ picture.frame__img > img, .close__media > picture > img { display: block; width:
 .close__media > picture { position: absolute; inset: 0; }
 
 /* inside a visual: the diagram card's height and the tool rows' icons */
-#datos .panel { --p-h: 520px; --ground-bg: var(--p-bg); --ground-surface: var(--p-bg); }
+#datos .panel { --p-h: 640px; --ground-bg: var(--p-bg); --ground-surface: var(--p-bg); }
 #datos .dg, #datos .dg * { transition: none !important; }
-.tools { display: grid; gap: var(--s-4); margin-top: var(--s-6); }
-.tools > div { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
-.tools .t-label { min-width: 132px; }
-.tools .ic-tile { --tile: 44px; }
 @media (max-width: 1023px) { #datos .panel { --p-h: 360px; } }
-@media (max-width: 639px) { #datos .panel { --p-h: 300px; } .tools { display: none; } }
+@media (max-width: 639px) { #datos .panel { --p-h: 300px; } }
 
 /* picture-develops: the method's photograph is the split's filled frame */
-figure.develop { margin: 0 0 var(--s-6); --ratio: 26%; }
-#metodo .frame__img { --pos: 50% 62%; }
-@media (max-width: 1023px) { figure.develop { --ratio: 40%; } }
-@media (max-width: 639px) { figure.develop { --ratio: 205%; } }
 
 /* a step's number in the method list */
 .rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
@@ -43,7 +36,7 @@ figure.develop { margin: 0 0 var(--s-6); --ratio: 26%; }
 .demo-form { margin-top: var(--s-2); }
 #demo .frame { --ratio: 108%; }
 #demo .frame__img { --pos: 50% 45%; }
-@media (min-width: 1024px) and (max-width: 1279px) { figure.develop { --ratio: 16%; } #demo .frame { --ratio: 100%; } }
+@media (min-width: 1024px) and (max-width: 1279px) { #demo .frame { --ratio: 100%; } }
 /* the tablet (640 to 1023): the method keeps its three columns and the demo's photograph is a band, so both
    stay one screen */
 @media (min-width: 640px) and (max-width: 1023px) {
@@ -59,10 +52,9 @@ figure.develop { margin: 0 0 var(--s-6); --ratio: 26%; }
 .hero--photo .hero__text { container-type: inline-size; }
 .hero--photo h1 { font-size: min(var(--ly-h1-xl), 20cqi); }
 
-/* a section is at least one screen and grows past it rather than lay its last rows over the next one (on a
-   short screen the cases list ran 150px into the method). The block that fills the screen keeps at least its
-   content's height */
-@media (min-width: 640px) {
+/* on a short screen (a laptop window under 860px tall) a section is at least one screen and grows past it
+   rather than lay its last rows over the next one; on taller screens the kit's one-screen grid holds */
+@media (min-width: 640px) and (max-height: 860px) {
   :where(main > :is(section, .section):not(.hero, .section--hero)) { display: flex; flex-direction: column; }
   main > :is(section, .section):not(.hero, .section--hero) {
     height: auto; min-height: calc(var(--h, 1) * 100vh); min-height: calc(var(--h, 1) * 100svh);
@@ -103,3 +95,78 @@ main > .section.legal { height: auto; min-height: 0; }
 .form__note, .field__note { font-size: var(--t-small); font-weight: 400; color: var(--muted); }
 .field--check .field__note { grid-column: 2; }
 .form__note a, .field__note a, .legal__body a { color: var(--action); text-decoration: underline; }
+
+
+/* ---------- the dark, AI-forward home (2026-11-25) ---------- */
+
+/* the hero's effect layer (gradient-mesh, mounted by system.js) under the triptych's three columns */
+.hero--triptych { position: relative; isolation: isolate; overflow: clip; }
+/* the effect layer spans the hero under the .wrap; its pause disc sits on the .wrap's right line, above the fold */
+.hero--triptych > .hero__fx { position: absolute; inset: 0; z-index: 0; overflow: clip; opacity: .42; }
+.hero--triptych > .wrap { position: relative; z-index: 1; }
+.hero--triptych > .hero__fx > .loop-pause { right: max(var(--s-5), calc((100% - 1280px) / 2)); bottom: var(--s-7); }
+/* one button height for the main action everywhere (the triptych's own 64px button would be a second look) */
+.hero--triptych .hero__cta .btn { height: var(--btn-h); padding-inline: var(--s-5); font-size: var(--t-body); }
+
+/* collage pieces: report captures (figures blurred), the assistant's answers and a report's name */
+.ly-collage { container-type: inline-size; }
+.ly-collage .ly-piece { border: 1px solid color-mix(in oklab, var(--p-accent) 28%, transparent); box-shadow: 0 0 0 1px rgb(0 0 0 / .2), 0 24px 60px -24px rgb(47 140 255 / .45); }
+.ly-collage .pc-shot { background: #fff; }
+.ly-collage .pc-ask { background: var(--p-surface); color: var(--p-ink); padding: 3cqw 3.2cqw; display: grid; align-content: start; gap: 1.4cqw; font: 400 max(13px, 1.9cqw)/1.35 var(--font-text); }
+.pc-ask__who { font: 500 max(12px, 1.6cqw)/1 var(--font-mono); color: var(--p-accent); letter-spacing: .02em; }
+.pc-ask__q { margin: 0; padding: 1.4cqw 2cqw; border-radius: var(--r-sm); background: color-mix(in oklab, var(--p-accent) 18%, var(--p-surface)); justify-self: end; max-width: 92%; }
+.pc-ask__a { margin: 0; color: var(--p-ink); }
+.ly-collage .pc-tag { background: var(--p-surface); color: var(--p-ink); padding: 2.4cqw 2.8cqw; display: grid; gap: .8cqw; font: 400 max(12px, 1.7cqw)/1.3 var(--font-text); }
+.pc-tag b { font-weight: 500; font-size: max(13px, 2cqw); }
+.pc-tag span { color: var(--p-muted); }
+
+/* app-frame (sections-library.md): the Brújula's sections beside the open report */
+#informes .grid > h2 { margin: 0; }
+.app__lead { color: var(--muted); }
+.app.ui { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); margin-top: var(--s-7); background: var(--u-bg); border: 1px solid var(--u-border); border-radius: var(--u-r); box-shadow: var(--u-shadow); }
+.app > .app__pane { position: relative; min-width: 0; min-height: 0; overflow: hidden; }
+.app > .app__pane + .app__pane { border-left: 1px solid var(--u-line); }
+.app > .app__pane > .ui-panel { width: 100%; border: 0; border-radius: 0; box-shadow: none; }
+.app > .app__pane::after { content: ""; position: absolute; inset: auto 0 0 0; height: 64px; background: linear-gradient(transparent, var(--u-bg)); pointer-events: none; }
+.app__pane--open { background: #fff; }
+.app__shot { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 0 0; }
+.app__over { position: absolute; z-index: 1; right: var(--s-5); bottom: var(--s-5); width: min(360px, calc(100% - 2 * var(--s-5))); }
+.app .ui-win__row.is-on { background: color-mix(in oklab, var(--u-accent, #2f8cff) 12%, transparent); }
+@media (min-width: 1024px) and (max-width: 1279px) { .app.ui { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); } }
+@media (max-width: 1023px) {
+  .app.ui { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); }
+  .app > .app__pane--list { max-height: 252px; }
+  .app > .app__pane--list::after { display: none; }
+  .app .ui-win__side { display: none; }
+  .app .ui-win__body { grid-template-columns: minmax(0, 1fr); }
+  .app > .app__pane + .app__pane { border-left: 0; border-top: 1px solid var(--u-line); }
+}
+@media (max-width: 639px) {
+  .app.ui { grid-template-rows: minmax(0, 1fr); }
+  .app > .app__pane--list { display: none; }
+  .app > .app__pane + .app__pane { border-top: 0; }
+  .app__over { display: none; }
+}
+
+/* the assistant: its chat on a stage, the questions as rows */
+.ask-card .stage { position: relative; height: 600px; border-radius: var(--r-md); overflow: hidden; background: var(--g-alt, var(--surface)); padding: var(--s-7) var(--s-7) 0; }
+.ask-card .ui-chat { max-width: 440px; margin-inline: auto; }
+.ask-list { margin-top: var(--s-6); }
+@media (max-width: 639px) { .ask-card .stage { height: 420px; padding: var(--s-4) var(--s-4) 0; } }
+
+/* a report capture in a frame (the solutions) */
+.frame--shot { background: #fff; }
+.frame--shot > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; max-width: none; }
+
+/* the statement that letters-assemble builds */
+#empresa .mo-la__type { font-size: clamp(48px, 7vw, 112px); line-height: 1; letter-spacing: var(--display-tracking-xl); }
+#empresa .mo-la__sub { margin-top: var(--s-5); max-width: 52ch; color: var(--muted); font-size: var(--t-lead); }
+
+/* the close's name across the .wrap: 13 letters in Chivo are about 7.5em wide */
+.close--word .close__word { font-size: min(164px, 11.4vw); line-height: .9; white-space: nowrap; }
+/* the method's timeline diagram over its steps */
+/* on a phone the hero's assistant piece shows the question only (its answer is in the assistant section) */
+@media (max-width: 639px) { .ly-collage .pc-ask__a { display: none; } }
+
+/* the solutions' links: a 44px target on a phone */
+#soluciones .rows__name { display: inline-flex; align-items: center; min-height: 44px; }
