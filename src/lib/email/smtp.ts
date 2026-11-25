@@ -32,11 +32,22 @@ interface Notice {
 /** sends a form notice to the owner; throws if the mailbox is not configured or the server refuses it */
 export async function sendNotice({ subject, html, replyTo }: Notice): Promise<void> {
   const mailbox = process.env.SMTP_USER || DEFAULT_MAILBOX
-  await transport().sendMail({
+  const to = process.env.CONTACT_TO || DEFAULT_MAILBOX
+  const info = await transport().sendMail({
     from: process.env.SMTP_FROM || `Web KPIntelligent <${mailbox}>`,
-    to: process.env.CONTACT_TO || DEFAULT_MAILBOX,
+    to,
     replyTo,
     subject,
     html,
   })
+  // the mail server's own answer (its queue id), so a notice that does not arrive can be traced at Dinahosting
+  console.log('Aviso del formulario aceptado por el servidor de correo', {
+    de: mailbox,
+    para: to,
+    aceptados: info.accepted,
+    rechazados: info.rejected,
+    respuesta: info.response,
+    id: info.messageId,
+  })
+  if (info.accepted.length === 0) throw new Error(`El servidor de correo no aceptó el destinatario ${to}`)
 }
