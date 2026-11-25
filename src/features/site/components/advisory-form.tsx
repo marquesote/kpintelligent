@@ -1,5 +1,6 @@
 import { ADVISORY_ACTION, ADVISORY_CONSENT } from '../advisory'
 import { Arrow } from './arrow'
+import { PRIVACY_PATH } from '@/config/legal'
 
 interface TextFieldProps {
   id: string
@@ -71,6 +72,9 @@ export function AdvisoryForm() {
       <div className="field field--full field--check">
         <input id="a-consent" name="consent" type="checkbox" value="si" required aria-describedby="a-consent-err" />
         <label htmlFor="a-consent">{ADVISORY_CONSENT}</label>
+        <p className="field__note">
+          Cómo tratamos sus datos: <a href={PRIVACY_PATH}>política de privacidad</a>.
+        </p>
         <p className="field__error" id="a-consent-err" hidden>
           Marque la casilla para que podamos enviarle el informe.
         </p>

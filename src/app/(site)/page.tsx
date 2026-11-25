@@ -278,6 +278,9 @@ export default function HomePage() {
                     <Arrow />
                   </button>
                 </div>
+                <p className="form__note">
+                  Usamos tus datos solo para contestarte: <a href="/privacidad">política de privacidad</a>.
+                </p>
                 <p className="form__status" role="status" data-form-status="" />
               </form>
             </div>

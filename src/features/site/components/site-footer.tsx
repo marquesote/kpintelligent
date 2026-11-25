@@ -64,6 +64,9 @@ export function SiteFooter({ base }: SiteFooterProps) {
                 propietarios.
               </span>
               <div className="socials" />
+              <a className="credits" href="/privacidad">
+                Política de privacidad
+              </a>
               <a className="credits" href="/credits.html">
                 Fotografías vía Wikimedia Commons
               </a>
