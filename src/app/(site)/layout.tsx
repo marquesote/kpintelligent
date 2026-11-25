@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import { KitScripts } from '@/features/site/components/kit-scripts'
 
-const TITLE = 'KPIntelligent: análisis financiero con IA para empresas'
+const TITLE = 'KPIntelligent: consultora de datos, BI e IA en Madrid'
 const DESCRIPTION =
-  'KPIntelligent convierte la contabilidad de su ERP en 85 informes de balance, resultados, caja, ratios y rating, con un asistente de IA que contesta con sus propias cifras.'
+  'Reunimos los datos de tu ERP, tu CRM y tus hojas de cálculo en una única fuente de verdad y la convertimos en cuadros de mando, informes automáticos y modelos predictivos.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kpintelligent.es'),
@@ -12,21 +12,21 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     title: TITLE,
-    description: '85 informes financieros y un asistente de IA sobre la contabilidad de su empresa.',
+    description: 'Cuadros de mando, ingeniería de datos e inteligencia artificial para empresas.',
     images: ['/share.jpg'],
     locale: 'es_ES',
     siteName: 'KPIntelligent',
   },
   twitter: { card: 'summary_large_image' },
   icons: { icon: '/favicon.png' },
-  other: { 'site-kind': 'software', 'page-type': 'software' },
+  other: { 'site-kind': 'other', 'page-type': 'service' },
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#060a14',
+  themeColor: '#f6f6f2',
 }
 
 const ENTER_GUARD =
@@ -48,17 +48,17 @@ const KIT_STYLES = [
 const MOMENT_MODULES = [
   '/assets/moments/moments.js',
   '/assets/moments/lib.js',
-  '/assets/moments/letters-assemble/moment.js',
-  '/assets/moments/iris-opens/moment.js',
+  '/assets/moments/word-highlight/moment.js',
+  '/assets/moments/picture-develops/moment.js',
 ]
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="es"
-      data-type="software"
+      data-type="service"
       data-radius="soft"
-      data-buttons="arrow"
+      data-buttons="solid"
       data-motion=""
       suppressHydrationWarning
     >
@@ -66,7 +66,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Chivo:wght@400..700&family=Chivo+Mono:wght@400..500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..700&family=Hanken+Grotesk:wght@400..600&display=swap"
           rel="stylesheet"
         />
         {KIT_STYLES.map((href) => (

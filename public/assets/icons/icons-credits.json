@@ -132,86 +132,9 @@
     "markUrl": "https://www.tableau.com/"
   },
   {
-    "file": "ui-brain.svg",
-    "icon": "ui:brain",
-    "name": "Brain",
-    "kind": "line",
-    "source": "@iconify-json/lucide@1.2.100",
-    "author": "Lucide Contributors",
-    "licence": "ISC",
-    "url": "https://github.com/lucide-icons/lucide",
-    "trademark": false
-  },
-  {
-    "file": "ui-calendar.svg",
-    "icon": "ui:calendar",
-    "name": "Calendar",
-    "kind": "line",
-    "source": "@iconify-json/lucide@1.2.100",
-    "author": "Lucide Contributors",
-    "licence": "ISC",
-    "url": "https://github.com/lucide-icons/lucide",
-    "trademark": false
-  },
-  {
-    "file": "ui-check-check.svg",
-    "icon": "ui:check-check",
-    "name": "Check Check",
-    "kind": "line",
-    "source": "@iconify-json/lucide@1.2.100",
-    "author": "Lucide Contributors",
-    "licence": "ISC",
-    "url": "https://github.com/lucide-icons/lucide",
-    "trademark": false
-  },
-  {
     "file": "ui-database.svg",
     "icon": "ui:database",
     "name": "Database",
-    "kind": "line",
-    "source": "@iconify-json/lucide@1.2.100",
-    "author": "Lucide Contributors",
-    "licence": "ISC",
-    "url": "https://github.com/lucide-icons/lucide",
-    "trademark": false
-  },
-  {
-    "file": "ui-message-square.svg",
-    "icon": "ui:message-square",
-    "name": "Message Square",
-    "kind": "line",
-    "source": "@iconify-json/lucide@1.2.100",
-    "author": "Lucide Contributors",
-    "licence": "ISC",
-    "url": "https://github.com/lucide-icons/lucide",
-    "trademark": false
-  },
-  {
-    "file": "ui-plug.svg",
-    "icon": "ui:plug",
-    "name": "Plug",
-    "kind": "line",
-    "source": "@iconify-json/lucide@1.2.100",
-    "author": "Lucide Contributors",
-    "licence": "ISC",
-    "url": "https://github.com/lucide-icons/lucide",
-    "trademark": false
-  },
-  {
-    "file": "ui-search.svg",
-    "icon": "ui:search",
-    "name": "Search",
-    "kind": "line",
-    "source": "@iconify-json/lucide@1.2.100",
-    "author": "Lucide Contributors",
-    "licence": "ISC",
-    "url": "https://github.com/lucide-icons/lucide",
-    "trademark": false
-  },
-  {
-    "file": "ui-sparkles.svg",
-    "icon": "ui:sparkles",
-    "name": "Sparkles",
     "kind": "line",
     "source": "@iconify-json/lucide@1.2.100",
     "author": "Lucide Contributors",

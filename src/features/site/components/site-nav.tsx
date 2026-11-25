@@ -7,7 +7,7 @@ interface SiteNavProps {
 
 export function SiteNav({ base }: SiteNavProps) {
   return (
-    <header className="nav nav--centre">
+    <header className="nav">
       <div className="wrap nav__bar">
         <a className="skip-link" href="#top">
           Saltar al contenido
@@ -32,7 +32,7 @@ export function SiteNav({ base }: SiteNavProps) {
               </svg>
             </a>
             <div className="nav__menu">
-              <div className="wrap grid menu-grid">
+              <div className="wrap grid">
                 {solutionGroups.map((group) => (
                   <div className="menu-col span-3" key={group.title}>
                     <p className="t-label">{group.title}</p>
