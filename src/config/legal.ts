@@ -4,7 +4,7 @@ export const LEGAL = {
   responsable: '[Pendiente: nombre o razón social del responsable]',
   nif: '[Pendiente: NIF]',
   domicilio: '[Pendiente: domicilio]',
-  email: '[Pendiente: correo de contacto para privacidad]',
+  email: 'marques@kpintelligent.es',
   /** how long a request is kept when the person does not become a client (a proposal, to confirm) */
   conservacion: '12 meses desde el último contacto',
   actualizado: '25 de noviembre de 2026',
