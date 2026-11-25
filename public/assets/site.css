@@ -89,3 +89,17 @@ figure.develop { margin: 0 0 var(--s-6); --ratio: 26%; }
 #informe .frame { --ratio: 108%; }
 @media (min-width: 640px) and (max-width: 1023px) { #informe .frame { --ratio: 30%; } }
 @media (max-width: 639px) { #informe .frame { display: none; } }
+
+/* the privacy policy: one readable column of text; the notes under the forms */
+main > .section.legal { height: auto; min-height: 0; }
+.legal__body { max-width: 72ch; }
+.legal__body h1 { font-size: var(--t-h2, 40px); }
+.legal__body h2 { font-size: var(--t-h3, 24px); margin-top: var(--s-7); margin-bottom: var(--s-3); }
+.legal__body p, .legal__body li { max-width: 68ch; }
+.legal__body p + p, .legal__body ul + p, .legal__body p + ul { margin-top: var(--s-3); }
+.legal__body ul { padding-left: 1.2em; list-style: disc; display: grid; gap: var(--s-2); }
+.legal__date { margin-top: var(--s-3); color: var(--muted); font-size: var(--t-small); }
+.legal__draft { margin-top: var(--s-5); padding: var(--s-4); border-radius: var(--r-sm, 8px); background: #fff4d6; color: #5c4400; }
+.form__note, .field__note { font-size: var(--t-small); font-weight: 400; color: var(--muted); }
+.field--check .field__note { grid-column: 2; }
+.form__note a, .field__note a, .legal__body a { color: var(--action); text-decoration: underline; }
