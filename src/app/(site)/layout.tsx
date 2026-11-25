@@ -3,7 +3,7 @@ import { KitScripts } from '@/features/site/components/kit-scripts'
 
 const TITLE = 'KPIntelligent: análisis financiero con IA para empresas'
 const DESCRIPTION =
-  'La Brújula Financiera convierte la contabilidad de su ERP en 85 informes de balance, resultados, caja, ratios y rating, con un asistente de IA que contesta con sus propias cifras.'
+  'KPIntelligent convierte la contabilidad de su ERP en 85 informes de balance, resultados, caja, ratios y rating, con un asistente de IA que contesta con sus propias cifras.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kpintelligent.es'),

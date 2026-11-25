@@ -135,7 +135,7 @@ export const steps = [
   { title: 'Diagnóstico', line: 'Revisamos sus sistemas, la calidad de sus datos y qué decisiones quiere tomar con ellos.' },
   { title: 'Conexión', line: 'Leemos su contabilidad desde el ERP o la base de datos, sin que cambie de programa.' },
   { title: 'Cuadre', line: 'Comprobamos que las cifras coinciden con sus cuentas oficiales antes de enseñarle nada.' },
-  { title: 'Informes', line: 'Ponemos en marcha la Brújula Financiera y los informes que su empresa necesita.' },
+  { title: 'Informes', line: 'Ponemos en marcha KPIntelligent y los informes que su empresa necesita.' },
   { title: 'Asistente', line: 'Activamos el asistente para que pregunte a sus números en lenguaje natural.' },
   { title: 'Seguimiento', line: 'Cada mes revisamos con usted lo que ha cambiado y qué hacer.' },
 ]

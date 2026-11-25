@@ -10,7 +10,7 @@ function ListPane() {
           <i />
         </span>
         <span className="ui-win__crumb">
-          Brújula Financiera <i>/</i> <b>Informes</b>
+          KPIntelligent <i>/</i> <b>Informes</b>
         </span>
       </div>
       <div className="ui-win__body">
@@ -87,7 +87,7 @@ function Findings() {
   )
 }
 
-/* app-frame: the Brújula Financiera as one app window, its nine sections beside the open report (a real
+/* app-frame: KPIntelligent as one app window, its nine sections beside the open report (a real
    capture, figures blurred) with the Analizador's findings over its lower right */
 export function ReportApp() {
   return (
@@ -98,7 +98,7 @@ export function ReportApp() {
             85 informes en una sola aplicación
           </h2>
           <p className="span-6 start-7 app__lead">
-            Elija un apartado y abra el informe: la Brújula Financiera lo calcula con la contabilidad de su ERP.
+            Elija un apartado y abra el informe: KPIntelligent lo calcula con la contabilidad de su ERP.
             El Analizador lee el resultado y le dice qué ha cambiado.{' '}
             <a className="link" href="/soluciones/dashboards-interactivos">
               Ver cómo trabajamos los cuadros de mando
@@ -108,7 +108,7 @@ export function ReportApp() {
         <div
           className="ui app fill"
           role="img"
-          aria-label="La Brújula Financiera abierta en el apartado Resultados: la lista de los nueve apartados junto al informe Bridge, con los hallazgos del Analizador"
+          aria-label="La aplicación de KPIntelligent, abierta en el apartado Resultados: la lista de los nueve apartados junto al informe Bridge, con los hallazgos del Analizador"
           data-ui-pause-host=""
         >
           <div className="app__pane app__pane--list">

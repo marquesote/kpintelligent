@@ -54,7 +54,7 @@ export function HomeHero() {
           <div
             className="ly-collage span-6 start-4"
             role="img"
-            aria-label="Informes de la Brújula Financiera (Bridge de resultados, Matriz KPIntelligent, pirámide DuPont, umbral de rentabilidad, NOF frente a fondo de maniobra) y respuestas del asistente"
+            aria-label="Informes de KPIntelligent (Bridge de resultados, Matriz KPIntelligent, pirámide DuPont, umbral de rentabilidad, NOF frente a fondo de maniobra) y respuestas del asistente"
           >
             <div className="ly-collage__set is-on">
               <Ask q={assistant.question} a={assistant.answer} box={{ left: 4, top: 6, width: 44 }} />

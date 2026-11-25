@@ -1,4 +1,4 @@
-/* The home page's words and pictures (dark, AI-forward redesign). Facts come from the Brújula Financiera
+/* The home page's words and pictures (dark, AI-forward redesign). Facts come from KPIntelligent
    catalogue (85 reports in 9 sections) and from what the Analizador really does (an assistant that answers
    with the company's own figures, findings). No figure on a report capture can be read: every one was
    blurred out of the client's screenshots before they were added. */
@@ -31,10 +31,10 @@ export const reports = {
 
 export const HERO = {
   title: 'Análisis financiero con IA',
-  lead: 'La Brújula Financiera lee la contabilidad de su ERP y la convierte en 85 informes: balance, resultados, caja, ratios y rating frente a su sector. Y un asistente le contesta con sus propias cifras.',
+  lead: 'KPIntelligent lee la contabilidad de su ERP y la convierte en 85 informes: balance, resultados, caja, ratios y rating frente a su sector. Y un asistente le contesta con sus propias cifras.',
 }
 
-/** the nine sections of the Brújula Financiera, as its main menu orders them (catalogue, 13/11/2026) */
+/** the nine sections of KPIntelligent, as its main menu orders them (catalogue, 13/11/2026) */
 export const reportSections = [
   { code: '01', name: 'Portada y navegación', line: 'Menú principal y control de versiones', count: 1 },
   { code: '02', name: 'Balance y flujos de caja', line: 'Balance, deuda, NOF, flujo de caja libre', count: 14 },

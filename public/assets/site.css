@@ -120,7 +120,7 @@ main > .section.legal { height: auto; min-height: 0; }
 .pc-tag b { font-weight: 500; font-size: max(13px, 2cqw); }
 .pc-tag span { color: var(--p-muted); }
 
-/* app-frame (sections-library.md): the Brújula's sections beside the open report */
+/* app-frame (sections-library.md): KPIntelligent's sections beside the open report */
 #informes .grid > h2 { margin: 0; }
 .app__lead { color: var(--muted); }
 .app.ui { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); margin-top: var(--s-7); background: var(--u-bg); border: 1px solid var(--u-border); border-radius: var(--u-r); box-shadow: var(--u-shadow); }
