@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import {
   ADVISORY_ACTION,
+  advisoryAnswers,
   advisoryAudience,
   advisoryFaq,
   advisoryQuestions,
@@ -9,7 +10,8 @@ import {
 } from '../advisory'
 import { AdvisoryForm } from './advisory-form'
 import { Arrow } from './arrow'
-import { ReportScreen } from './live/screens'
+import { PipelineBand, ReportScreen } from './live/screens'
+import { DataOrbit, QuestionScreen, ResultTiles } from './live/orbit'
 
 const twoPhoneScreens = { '--hm': 2 } as CSSProperties
 
@@ -61,10 +63,11 @@ function Questions() {
               tiene su informe, con sus cifras.
             </p>
           </div>
+          <QuestionScreen items={advisoryAnswers} />
         </div>
-        <ul className="rows span-6 start-7">
-          {advisoryQuestions.map((question) => (
-            <li key={question}>
+        <ul className="rows span-6 start-7 lv-qa-rows">
+          {advisoryQuestions.map((question, i) => (
+            <li key={question} style={{ '--i': i } as CSSProperties}>
               <span className="rows__name">{question}</span>
             </li>
           ))}
@@ -86,6 +89,7 @@ function Start() {
         <div className="section-head">
           <h2 id="como-empezamos-h">Empezamos con su informe, no con un folleto</h2>
         </div>
+        <PipelineBand steps={advisorySteps.map((step) => ({ title: step.title }))} />
         <div className="grid grid--top">
           {[0, 2].map((start) => (
             <ol className={`rows span-6${start ? ' start-7' : ''}`} start={start + 1} key={start}>
@@ -114,6 +118,14 @@ function Tools() {
             <h2 id="herramientas-h">Con qué trabajamos</h2>
             <p>Con una herramienta propia, el Analizador Financiero, y con cuadros de mando en Power BI.</p>
           </div>
+          <DataOrbit
+            mode="stream"
+            title="Analizador Financiero"
+            label="La contabilidad de SAP, Navision, Odoo, Sage o Excel entra en el Analizador Financiero y sale convertida en el informe, el cuadro de mando y la comparación con el sector."
+            nodes={['SAP', 'Navision', 'Odoo', 'Sage', 'Excel']}
+            core="Analizador Financiero"
+            outputs={['Informe', 'Power BI', 'Sector']}
+          />
         </div>
         <ul className="rows span-6 start-7">
           {advisoryTools.map((tool) => (
@@ -148,6 +160,15 @@ function AudienceAndFaq() {
               </li>
             ))}
           </ul>
+          <ResultTiles
+            title="Lo que recibe"
+            items={[
+              { metric: 'Gratis', label: 'Su informe financiero' },
+              { metric: 'Mismo día', label: 'La respuesta a su pregunta' },
+              { metric: '30 min', label: 'Videollamada, si le resulta útil' },
+              { metric: 'Suyo', label: 'El informe, contrate o no' },
+            ]}
+          />
         </div>
         <div className="span-6 start-7">
           <h2 className="advisory-faq-h">Preguntas frecuentes</h2>

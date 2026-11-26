@@ -313,6 +313,7 @@ export function PipelineBand({ steps }: { steps: { title: string }[] }) {
   return (
     <div
       className="lv-pipe"
+      style={v({ '--n': steps.length })}
       role="img"
       aria-label={`Los pasos del método, uno detrás de otro: ${steps.map((s) => s.title).join(', ')}.`}
     >

@@ -6,6 +6,7 @@ import { HoloHero } from '@/features/site/components/live/holo-hero'
 import { AiServicesSection, AutomationSection } from '@/features/site/components/live/ai-sections'
 import { CaseScreen, LiveDashboard, PipelineBand } from '@/features/site/components/live/screens'
 import { AssistantChat } from '@/features/site/components/live/assistant-chat'
+import { DataOrbit, DemoPreview, LiveFeed } from '@/features/site/components/live/orbit'
 import {
   MAIN_ACTION,
   biTools,
@@ -98,7 +99,20 @@ export default function HomePage() {
                   ))}
                 </div>
               </div>
+              <LiveFeed
+                title="Sincronización en vivo"
+                label="Un registro en movimiento de las cargas de datos: SAP, Odoo, HubSpot, Salesforce y Excel llegan al almacén y Power BI se actualiza."
+                lines={[
+                  ['07:00', 'SAP · 18 tablas cargadas en el almacén'],
+                  ['07:02', 'Odoo · pedidos y facturas del día'],
+                  ['07:03', 'HubSpot · 214 oportunidades actualizadas'],
+                  ['07:04', 'Salesforce · cuentas y contactos sincronizados'],
+                  ['07:05', 'Excel de presupuesto · validado sin errores'],
+                  ['07:06', 'Power BI · 12 informes listos para el día'],
+                ]}
+              />
             </div>
+
             <div className="panel span-6 start-7 ground-inverse lv-dgpanel" data-icon-base="/assets/icons">
               <div className="dg" data-diagram={JSON.stringify(sourcesDiagram)} />
             </div>
@@ -111,13 +125,26 @@ export default function HomePage() {
           data-moment="word-highlight"
           aria-label="La empresa"
         >
-          <div className="wrap">
-            <p className="t-label">La empresa</p>
-            <p className="mo-wh__text">
-              Creamos cultura analítica en las organizaciones: una única fuente de verdad en lugar de hojas de
-              cálculo desordenadas y silos de información, para que los datos pasen a ser{' '}
-              <strong>activos tangibles</strong>.
-            </p>
+          <div className="wrap grid lv-statement">
+            <div className="span-6">
+              <p className="t-label">La empresa</p>
+              <p className="mo-wh__text">
+                Creamos cultura analítica en las organizaciones: una única fuente de verdad en lugar de hojas de
+                cálculo desordenadas y silos de información, para que los datos pasen a ser{' '}
+                <strong>activos tangibles</strong>.
+              </p>
+            </div>
+            <div className="span-6 start-7 lv-fill">
+              <DataOrbit
+                mode="stream"
+                chaos
+                title="De los silos a una fuente de verdad"
+                label="Hojas de cálculo, ERP, CRM, correos y archivos sueltos se mueven desordenados y fluyen hacia una única fuente de verdad, de la que salen informes, previsiones e IA."
+                nodes={['Hojas de cálculo', 'ERP', 'CRM', 'Correos', 'Archivos sueltos']}
+                core="Una fuente de verdad"
+                outputs={['Informes', 'Previsiones', 'IA']}
+              />
+            </div>
           </div>
         </section>
 
@@ -250,6 +277,13 @@ export default function HomePage() {
                 </p>
                 <p className="form__status" role="status" data-form-status="" />
               </form>
+              <DemoPreview
+                items={[
+                  { title: 'Tus cuadros de mando, con tus datos', viz: 'wave' },
+                  { title: 'Un asistente que responde sobre tu empresa', viz: 'chat' },
+                  { title: 'Una automatización trabajando', viz: 'flow' },
+                ]}
+              />
             </div>
             <div className="span-6 start-7 lv-fill">
               <AssistantChat />

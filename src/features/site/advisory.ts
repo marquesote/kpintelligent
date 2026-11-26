@@ -16,6 +16,17 @@ export const advisoryQuestions = [
   '¿Voy según presupuesto?',
 ]
 
+/* the example answers the moving screen gives (illustrative figures, labelled "ejemplo" on the screen) */
+export const advisoryAnswers = [
+  { q: advisoryQuestions[0], m: '1,82 M€', a: 'Es su punto muerto: por debajo de esas ventas al año, la empresa pierde dinero.' },
+  { q: advisoryQuestions[1], m: '+210.000 €', a: 'Es lo que han crecido clientes y existencias: el beneficio está, pero inmovilizado.' },
+  { q: advisoryQuestions[2], m: 'Mejor que el 64 %', a: 'De las empresas de su sector y tamaño, según sus ratios de solvencia.' },
+  { q: advisoryQuestions[3], m: '2,1 años', a: 'Es lo que tardaría en devolver la deuda neta con lo que genera hoy.' },
+  { q: advisoryQuestions[4], m: '7,5 % al año', a: 'Es lo que puede crecer con sus propios recursos, sin pedir financiación.' },
+  { q: advisoryQuestions[5], m: '−23 %', a: 'Cae el resultado: sus costes fijos multiplican el efecto de la bajada de ventas.' },
+  { q: advisoryQuestions[6], m: '96 %', a: 'De las ventas presupuestadas, con el margen 2 puntos por encima de lo previsto.' },
+]
+
 export const advisorySteps = [
   {
     title: 'Nos da el CIF de su empresa y un correo',

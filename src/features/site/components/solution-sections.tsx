@@ -8,6 +8,7 @@ import { FlowScreen, LiveDashboard, ReportScreen } from './live/screens'
 import { DeepVisual } from './live/screens-ai'
 import { DeepCapabilities, DeepProcess, DeepStats } from './live/deep-sections'
 import { getAiDeep } from '@/data/aiDeepContent'
+import { DataOrbit, ResultTiles } from './live/orbit'
 
 /* one moving picture per service area, in place of a photograph */
 const etlFlow = {
@@ -102,9 +103,19 @@ export function SolutionSections({ solution }: { solution: SolutionPage }) {
         data-moment="word-highlight"
         aria-label="En una frase"
       >
-        <div className="wrap">
-          <p className="t-label">{solution.title}</p>
-          <p className="mo-wh__text">{solution.subtitle}.</p>
+        <div className="wrap grid lv-statement">
+          <div className="span-6">
+            <p className="t-label">{solution.title}</p>
+            <p className="mo-wh__text">{solution.subtitle}.</p>
+          </div>
+          <div className="span-6 start-7 lv-fill">
+            <DataOrbit
+              title={`${solution.title} · qué incluye`}
+              label={`${solution.title} en el centro y, a su alrededor, lo que incluye: ${solution.features.map((f) => f.title).join(', ')}.`}
+              core={solution.title}
+              nodes={solution.features.map((f) => f.title)}
+            />
+          </div>
         </div>
       </section>
 
@@ -122,6 +133,7 @@ export function SolutionSections({ solution }: { solution: SolutionPage }) {
               <h2 id="incluye-h">Qué incluye el servicio</h2>
               {rest ? <p>{rest}</p> : null}
             </div>
+            <ResultTiles title="Resultados que buscamos" items={solution.benefits.slice(0, 4)} />
           </div>
           <ul className="rows span-6 start-7">
             {solution.features.map((feature) => (
@@ -192,6 +204,12 @@ export function SolutionSections({ solution }: { solution: SolutionPage }) {
                 </li>
               ))}
             </ul>
+            <DataOrbit
+              mode="constellation"
+              title="Tecnologías con las que trabajamos"
+              label={`Una constelación con las tecnologías del servicio: ${solution.technologies.join(', ')}.`}
+              nodes={solution.technologies.slice(0, 9)}
+            />
           </div>
           <div className="faq span-6 start-7">
             {solution.faq.map((item) => (
