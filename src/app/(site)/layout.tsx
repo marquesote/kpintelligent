@@ -34,6 +34,9 @@ const ENTER_GUARD =
 const MOMENT_GUARD =
   "document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)"
 
+/* a new value on every build, so browsers fetch the stylesheets again after each deploy */
+const ASSET_VERSION = String(Date.now())
+
 const KIT_STYLES = [
   '/assets/system.css',
   '/assets/ui/cards.css',
@@ -70,7 +73,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
         {KIT_STYLES.map((href) => (
-          <link rel="stylesheet" href={href} key={href} />
+          <link rel="stylesheet" href={`${href}?v=${ASSET_VERSION}`} key={href} />
         ))}
         <script dangerouslySetInnerHTML={{ __html: ENTER_GUARD }} />
         <script dangerouslySetInnerHTML={{ __html: MOMENT_GUARD }} />

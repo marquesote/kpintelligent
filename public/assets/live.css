@@ -739,3 +739,8 @@ main > section.section.lv-stats-sec:not(.hero) { min-height: 0; height: auto; pa
 @media (prefers-reduced-motion: reduce) { .lv-qa-rows li { animation: none; } }
 .lv-qa__stack { min-height: 270px; }
 #para-quien .lv-card { margin-top: var(--s-6); min-height: 0; }
+
+/* the hero claim: a little smaller, "número 1" lit */
+.lv-hero h1 { font-size: min(var(--ly-h1-xl, 76px), 4.5vw); }
+.lv-h1-accent { color: var(--lv-cyan); text-shadow: 0 0 28px rgba(92, 200, 255, .55); white-space: nowrap; }
+@media (max-width: 639px) { .lv-hero h1 { font-size: var(--ly-h1); } }

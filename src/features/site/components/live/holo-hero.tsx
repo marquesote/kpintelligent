@@ -129,9 +129,11 @@ export function HoloHero() {
         <div className="hero-text lv-hero__grid">
           <div className="lv-hero__copy">
             <p className="hero__kicker lv-kicker">
-              <span className="dot" /> Datos, BI e inteligencia artificial
+              <span className="dot" /> Consultora de datos e IA en Madrid
             </p>
-            <h1 id="hero-h">Consultora de datos e IA en Madrid</h1>
+            <h1 id="hero-h">
+              Lleva tu empresa al <span className="lv-h1-accent">número 1</span> de su sector
+            </h1>
             <p className="lv-rotate-line">
               Convertimos tus datos en{' '}
               <span className="lv-rotate" aria-hidden="true">
