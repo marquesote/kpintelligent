@@ -132,7 +132,7 @@ export function HoloHero() {
               <span className="dot" /> Consultora de datos e IA en Madrid
             </p>
             <h1 id="hero-h">
-              Lleva tu empresa al <span className="lv-h1-accent">número 1</span> de su sector
+              El futuro de tu sector <span className="lv-h1-accent">lo lideras tú</span>
             </h1>
             <p className="lv-rotate-line">
               Convertimos tus datos en{' '}
